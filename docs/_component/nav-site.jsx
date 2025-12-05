@@ -13,11 +13,11 @@
  */
 
 import React from 'react'
-import {config} from '../_config.js'
-import {GitHub} from './icon/github.jsx'
-import {Mdx} from './icon/mdx.jsx'
-import {OpenCollective} from './icon/open-collective.jsx'
-import {NavigationGroup} from './nav.jsx'
+import { config, toHref } from '../_config.js'
+import { GitHub } from './icon/github.jsx'
+import { Mdx } from './icon/mdx.jsx'
+import { OpenCollective } from './icon/open-collective.jsx'
+import { NavigationGroup } from './nav.jsx'
 
 export function NavigationSiteSkip() {
   return (
@@ -38,7 +38,7 @@ export function NavigationSiteSkip() {
  *   Element.
  */
 export function NavigationSite(properties) {
-  const {name, navigationTree} = properties
+  const { name, navigationTree } = properties
 
   return (
     <nav className="navigation" aria-label="Site navigation">
@@ -51,7 +51,7 @@ export function NavigationSite(properties) {
         Skip to content
       </a>
       <div className="navigation-primary">
-        <a href="/" aria-current={name === '/' ? 'page' : undefined}>
+        <a href={toHref('/')} aria-current={name === '/' ? 'page' : undefined}>
           <h1>
             <Mdx />
           </h1>

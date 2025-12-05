@@ -17,6 +17,23 @@ export const config = {
   title: 'MDX'
 }
 
+/**
+ * Convert a path to href with base path
+ * @param {string} path - Path like '/docs/' or '/community/'
+ * @returns {string} - Full path with base like '/mdx-vietnamese/docs/'
+ */
+export function toHref(path) {
+  // Get the pathname from site URL (e.g., '/mdx-vietnamese/')
+  const base = config.site.pathname
+  // If path is just '/', return base without trailing slash
+  if (path === '/') {
+    return base.endsWith('/') ? base.slice(0, -1) || '/' : base
+  }
+  // Remove leading slash from path and combine with base
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path
+  return base + cleanPath
+}
+
 /** @type {Record<string, string>} */
 export const redirect = {
   '/about/index.html': '/community/about/',

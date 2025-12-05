@@ -35,13 +35,14 @@
  *   Properties for `NavigationGroup`.
  */
 
-import {apStyleTitleCase} from 'ap-style-title-case'
-import {toJsxRuntime} from 'hast-util-to-jsx-runtime'
+import { apStyleTitleCase } from 'ap-style-title-case'
+import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
 import React from 'react'
-import {Fragment, jsx, jsxs} from 'react/jsx-runtime'
-import {sortItems} from './sort.js'
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
+import { toHref } from '../_config.js'
+import { sortItems } from './sort.js'
 
-const dateTimeFormat = new Intl.DateTimeFormat('en', {dateStyle: 'long'})
+const dateTimeFormat = new Intl.DateTimeFormat('en', { dateStyle: 'long' })
 
 /**
  * @param {Readonly<GroupProperties>} properties
@@ -58,7 +59,7 @@ export function NavigationGroup(properties) {
   } = properties
 
   return (
-    <ol {...{className}}>
+    <ol {...{ className }}>
       {sortItems(items, sort).map(function (d) {
         return <NavigationItem key={d.name} {...rest} item={d} />
       })}
@@ -79,8 +80,8 @@ export function NavigationItem(properties) {
     item,
     name: activeName
   } = properties
-  const {children, data = {}, name} = item
-  const {matter = {}, meta = {}, navExcludeGroup, navigationSortItems} = data
+  const { children, data = {}, name } = item
+  const { matter = {}, meta = {}, navExcludeGroup, navigationSortItems } = data
   const title = matter.title || meta.title
   const defaultTitle = apStyleTitleCase(
     name.replace(/\/$/, '').split('/').pop()
@@ -101,10 +102,10 @@ export function NavigationItem(properties) {
         {
           type: 'element',
           tagName: 'div',
-          properties: {className: ['nav-description']},
+          properties: { className: ['nav-description'] },
           children
         },
-        {Fragment, jsx, jsxs}
+        { Fragment, jsx, jsxs }
       )
     } else {
       description = matter.description || meta.description || undefined
@@ -128,7 +129,10 @@ export function NavigationItem(properties) {
   return (
     <li>
       {title ? (
-        <a href={name} aria-current={name === activeName ? 'page' : undefined}>
+        <a
+          href={toHref(name)}
+          aria-current={name === activeName ? 'page' : undefined}
+        >
           {title}
         </a>
       ) : (

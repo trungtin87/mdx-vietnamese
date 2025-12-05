@@ -20,11 +20,12 @@
  */
 
 import React from 'react'
-import {FootSite} from './foot-site.jsx'
-import {NavigationSite, NavigationSiteSkip} from './nav-site.jsx'
-import {sortItems} from './sort.js'
+import { toHref } from '../_config.js'
+import { FootSite } from './foot-site.jsx'
+import { NavigationSite, NavigationSiteSkip } from './nav-site.jsx'
+import { sortItems } from './sort.js'
 
-const dateTimeFormat = new Intl.DateTimeFormat('en', {dateStyle: 'long'})
+const dateTimeFormat = new Intl.DateTimeFormat('en', { dateStyle: 'long' })
 
 /**
  * @param {Readonly<Properties>} properties
@@ -33,18 +34,18 @@ const dateTimeFormat = new Intl.DateTimeFormat('en', {dateStyle: 'long'})
  *   Element.
  */
 export function Layout(properties) {
-  const {ghUrl, name, navigationTree} = properties
+  const { ghUrl, name, navigationTree } = properties
   const [self, parent] = findSelfAndParent(navigationTree) || []
   const navigationSortItems = parent
     ? parent.data.navigationSortItems
     : undefined
   const siblings = parent
     ? sortItems(
-        parent.children,
-        typeof navigationSortItems === 'string'
-          ? navigationSortItems
-          : undefined
-      )
+      parent.children,
+      typeof navigationSortItems === 'string'
+        ? navigationSortItems
+        : undefined
+    )
     : []
   const meta = (self ? self.data.meta : properties.meta) || {}
   const index = self ? siblings.indexOf(self) : -1
@@ -74,9 +75,9 @@ export function Layout(properties) {
   const up =
     parent && self && parent !== navigationTree ? (
       <div>
-        <a href={parent.name}>{entryToTitle(parent)}</a>
+        <a href={toHref(parent.name)}>{entryToTitle(parent)}</a>
         {' / '}
-        <a href={name} aria-current="page">
+        <a href={toHref(name)} aria-current="page">
           {entryToTitle(self)}
         </a>
       </div>
@@ -86,7 +87,7 @@ export function Layout(properties) {
     <div>
       Previous:
       <br />
-      <a rel="prev" href={previous.name}>
+      <a rel="prev" href={toHref(previous.name)}>
         {entryToTitle(previous)}
       </a>
     </div>
@@ -96,7 +97,7 @@ export function Layout(properties) {
     <div>
       Next:
       <br />
-      <a rel="next" href={next.name}>
+      <a rel="next" href={toHref(next.name)}>
         {entryToTitle(next)}
       </a>
     </div>
