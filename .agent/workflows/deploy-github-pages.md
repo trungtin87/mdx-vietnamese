@@ -45,7 +45,7 @@ git push origin main
 
 Sau khi workflow chạy xong, website sẽ được deploy tại:
 
-```
+```text
 https://<username>.github.io/<repository-name>/
 ```
 
