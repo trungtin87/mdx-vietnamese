@@ -51,6 +51,15 @@ https://<username>.github.io/<repository-name>/
 
 ## Lưu ý
 
+- **Cấu hình URL**: Đảm bảo file `docs/_config.js` có URL đúng:
+
+  ```javascript
+  const site = new URL('https://<username>.github.io/<repository-name>/')
+  ```
+
+  Nếu URL sai, CSS và assets sẽ không load được.
+
 - Đảm bảo file `.github/workflows/website.yml` đã được cấu hình đúng
 - Kiểm tra GitHub Actions tab để xem trạng thái deployment
 - Nếu có lỗi, kiểm tra logs trong GitHub Actions để debug
+- Sau khi push code, đợi khoảng 2-3 phút để GitHub Actions build và deploy

@@ -29,28 +29,28 @@
 
 import assert from 'node:assert'
 import fs from 'node:fs/promises'
-import {fileURLToPath} from 'node:url'
+import { fileURLToPath } from 'node:url'
 import structuredClone from '@ungap/structured-clone'
-import {globby} from 'globby'
-import {h} from 'hastscript'
-import {sanitize} from 'hast-util-sanitize'
-import {select} from 'hast-util-select'
+import { globby } from 'globby'
+import { h } from 'hastscript'
+import { sanitize } from 'hast-util-sanitize'
+import { select } from 'hast-util-select'
 import pAll from 'p-all'
 import React from 'react'
-import {renderToString} from 'react-dom/server'
+import { renderToString } from 'react-dom/server'
 import rehypeDocument from 'rehype-document'
 import rehypeMeta from 'rehype-meta'
 import rehypeMinifyUrl from 'rehype-minify-url'
 import rehypeParse from 'rehype-parse'
 import rehypePresetMinify from 'rehype-preset-minify'
 import rehypeStringify from 'rehype-stringify'
-import {unified} from 'unified'
-import {VFile} from 'vfile'
-import {sitemap} from 'xast-util-sitemap'
-import {toXml} from 'xast-util-to-xml'
-import {Layout} from '../docs/_component/layout.jsx'
-import {config} from '../docs/_config.js'
-import {schema} from './schema-description.js'
+import { unified } from 'unified'
+import { VFile } from 'vfile'
+import { sitemap } from 'xast-util-sitemap'
+import { toXml } from 'xast-util-to-xml'
+import { Layout } from '../docs/_component/layout.jsx'
+import { config } from '../docs/_config.js'
+import { schema } from './schema-description.js'
 
 const listFormat = new Intl.ListFormat('en')
 
@@ -76,9 +76,9 @@ const allInfo = await pAll(
 
       /** @type {{default: MDXContent, info?: Info, matter: DataMapMatter, meta: DataMapMeta, navExclude?: boolean | undefined, navSortSelf?: number | undefined}} */
       const imported = await import(url.href)
-      const {default: Content, info, ...data} = imported
+      const { default: Content, info, ...data } = imported
       // Handle `author` differently.
-      const {author, ...restInfo} = info || {}
+      const { author, ...restInfo } = info || {}
       const authors = Array.isArray(author) ? author : author ? [author] : []
       const authorNames = authors.map(function (d) {
         return d.name
@@ -107,18 +107,18 @@ const allInfo = await pAll(
         )
       }
 
-      return {Content, data, ghUrl, jsonUrl, name, url}
+      return { Content, data, ghUrl, jsonUrl, name, url }
     }
   }),
-  {concurrency: 6}
+  { concurrency: 6 }
 )
 
 /** @type {Item} */
-const navigationTree = {name: '/', data: {}, children: []}
+const navigationTree = { name: '/', data: {}, children: [] }
 let index = -1
 
 while (++index < allInfo.length) {
-  const {data, name} = allInfo[index]
+  const { data, name } = allInfo[index]
   const parts = name.split('/').slice(0, -1)
   let partIndex = 0
   let context = navigationTree
@@ -132,7 +132,7 @@ while (++index < allInfo.length) {
     })
 
     if (!contextItem) {
-      contextItem = {name, data: {}, children: []}
+      contextItem = { name, data: {}, children: [] }
       context.children.push(contextItem)
     }
 
@@ -164,14 +164,14 @@ index = -1
 await pAll(
   allInfo.map(function (d) {
     return async function () {
-      const {Content, data, ghUrl, jsonUrl, name} = d
+      const { Content, data, ghUrl, jsonUrl, name } = d
 
-      await fs.mkdir(new URL('./', jsonUrl), {recursive: true})
+      await fs.mkdir(new URL('./', jsonUrl), { recursive: true })
       await fs.writeFile(jsonUrl, JSON.stringify(data))
 
       const element = React.createElement(Content, {
         ...data,
-        components: {wrapper: Layout},
+        components: { wrapper: Layout },
         ghUrl,
         name,
         navigationTree
@@ -184,11 +184,11 @@ await pAll(
       data.meta.pathname = canonical.pathname
 
       const file = await unified()
-        .use(rehypeParse, {fragment: true})
+        .use(rehypeParse, { fragment: true })
         .use(rehypeDocument, {
-          css: ['/index.css', 'https://esm.sh/@docsearch/css@3/dist/style.css'],
+          css: [new URL('index.css', config.site).href, 'https://esm.sh/@docsearch/css@3/dist/style.css'],
           // Idea: only include editor on playground? Use more editors.
-          js: ['/index.js', '/editor.js'],
+          js: [new URL('index.js', config.site).href, new URL('editor.js', config.site).href],
           language: 'en',
           link: [
             {
@@ -208,7 +208,7 @@ await pAll(
               type: 'image/svg+xml'
             }
           ],
-          meta: [{content: 'mdx', name: 'generator'}]
+          meta: [{ content: 'mdx', name: 'generator' }]
         })
         .use(rehypeMeta, {
           color: config.color,
@@ -216,18 +216,18 @@ await pAll(
           image:
             name === '/'
               ? {
-                  height: 1490,
-                  url: new URL('og.png', config.site).href,
-                  width: 3062
-                }
+                height: 1490,
+                url: new URL('og.png', config.site).href,
+                width: 3062
+              }
               : {
-                  height: 1256,
-                  url:
-                    name === '/blog/v2/' || name === '/migrating/v2/'
-                      ? new URL('og-v2.png', config.site).href
-                      : new URL('index.png', canonical).href,
-                  width: 2400
-                },
+                height: 1256,
+                url:
+                  name === '/blog/v2/' || name === '/migrating/v2/'
+                    ? new URL('og-v2.png', config.site).href
+                    : new URL('index.png', canonical).href,
+                width: 2400
+              },
           name: config.title,
           og: true,
           ogNameInTitle: true,
@@ -237,10 +237,10 @@ await pAll(
           type: 'article'
         })
         .use(rehypeLazyCss, [
-          {href: 'https://esm.sh/@wooorm/starry-night@3/style/both.css'}
+          { href: 'https://esm.sh/@wooorm/starry-night@3/style/both.css' }
         ])
         .use(rehypePresetMinify)
-        .use(rehypeMinifyUrl, {from: canonical.href})
+        .use(rehypeMinifyUrl, { from: canonical.href })
         .use(rehypeStringify)
         .process(
           new VFile({
@@ -250,12 +250,12 @@ await pAll(
           })
         )
 
-      if (file.dirname) await fs.mkdir(file.dirname, {recursive: true})
+      if (file.dirname) await fs.mkdir(file.dirname, { recursive: true })
       await fs.writeFile(file.path, String(file))
       console.log('  generate: `%s`', name)
     }
   }),
-  {concurrency: 6}
+  { concurrency: 6 }
 )
 
 console.log('✔ Generate')
@@ -293,7 +293,7 @@ function rehypeLazyCss(styles) {
         })
       )
       disabled.push(
-        h('link', {...structuredClone(properties), rel: 'stylesheet'})
+        h('link', { ...structuredClone(properties), rel: 'stylesheet' })
       )
     }
 
