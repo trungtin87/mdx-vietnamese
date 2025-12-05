@@ -9,169 +9,169 @@ export const info = {
 }
 export const navSortSelf = 4
 
-# Extending MDX
+# Mở rộng MDX
 
-This article explains how to extend MDX content—specifically, how to *transform*
-content with plugins. {/* more */}
-See [§ Using MDX][use] for how to pass components, props, and the layout.
-See [§ Getting started][start] for how to integrate MDX into your project.
+Bài viết này giải thích cách mở rộng nội dung MDX—cụ thể là cách *chuyển đổi*
+nội dung với các plugin. {/* more */}
+Xem [§ Sử dụng MDX][use] để biết cách truyền components, props và layout.
+Xem [§ Bắt đầu][start] để biết cách tích hợp MDX vào dự án của bạn.
 
-## Contents
+## Nội dung
 
 * [Components & plugins](#components--plugins)
-  * [List of components](#list-of-components)
-  * [List of plugins](#list-of-plugins)
-* [Using plugins](#using-plugins)
-* [Creating plugins](#creating-plugins)
+  * [Danh sách components](#list-of-components)
+  * [Danh sách plugins](#list-of-plugins)
+* [Sử dụng plugins](#using-plugins)
+* [Tạo plugins](#creating-plugins)
 
 ## Components & plugins
 
-There are three extension points when using `@mdx-js/mdx` or one of its
-integrations:
+Có ba điểm mở rộng khi sử dụng `@mdx-js/mdx` hoặc một trong các
+tích hợp của nó:
 
-* Options passed to the compiler (see [¶ API in `@mdx-js/mdx`][api])
-* Plugins that hook into several stages of compilation (see [remark
-  plugins][remark-plugins], [rehype plugins][rehype-plugins], and
+* Các tùy chọn được truyền cho trình biên dịch (xem [¶ API trong `@mdx-js/mdx`][api])
+* Các plugin kết nối vào nhiều giai đoạn của quá trình biên dịch (xem [remark
+  plugins][remark-plugins], [rehype plugins][rehype-plugins], và
   [recma plugins][recma-plugins])
-* Components passed, defined, or imported at runtime (see [§ Using MDX][use])
+* Các component được truyền, định nghĩa hoặc import tại runtime (xem [§ Sử dụng MDX][use])
 
-Most of the time, these components and plugins are not coupled to MDX.
-For example, if you’re using React, then you can use
-[`<ReactConfetti />`][react-confetti] with MDX.
-Or, you can use the plugin [`remark-gfm`][remark-gfm] to turn on GFM features in
+Hầu hết thời gian, các component và plugin này không gắn kết với MDX.
+Ví dụ, nếu bạn đang sử dụng React, bạn có thể sử dụng
+[`<ReactConfetti />`][react-confetti] với MDX.
+Hoặc, bạn có thể sử dụng plugin [`remark-gfm`][remark-gfm] để bật các tính năng GFM trong
 MDX.
-Sometimes, we need specific components or specific plugins to work with MDX.
-We’re compiling those here on this page.
+Đôi khi, chúng ta cần các component cụ thể hoặc các plugin cụ thể để hoạt động với MDX.
+Chúng tôi đang tổng hợp chúng ở đây trên trang này.
 
-### List of components
+### Danh sách components
 
 * [`PaulieScanlon/mdx-embed`](https://github.com/PaulieScanlon/mdx-embed)
-  — React components for embedding 3rd party content, integrates w/
+  — Các React component để nhúng nội dung bên thứ 3, tích hợp với
   MDX provider
 * [`system-ui/theme-ui`](https://github.com/system-ui/theme-ui)
-  — React components for building consistent apps, integrates w/ MDX provider
+  — Các React component để xây dựng ứng dụng nhất quán, tích hợp với MDX provider
 
 {/*
-  * Please use alpha sorting on **project** name!
-  * You can use this template:
+  * Vui lòng sắp xếp theo thứ tự bảng chữ cái theo tên **dự án**!
+  * Bạn có thể sử dụng template này:
   *
   * ```markdown
   * * [`user/project`](https://github.com/user/project)
-  *   — somewhat short description of the project
+  *   — mô tả ngắn gọn về dự án
   * ```
   */}
 
 <Note type="info">
-  **Note**: have another component that *specifically* works with MDX?
-  Please send a PR to add it here!
+  **Lưu ý**: Bạn có component khác *đặc biệt* hoạt động với MDX?
+  Vui lòng gửi PR để thêm nó vào đây!
 </Note>
 
-### List of plugins
+### Danh sách plugins
 
-See also the [list of remark plugins][remark-plugins],
-[list of rehype plugins][rehype-plugins], and
-[list of recma plugins][recma-plugins].
+Xem thêm [danh sách remark plugins][remark-plugins],
+[danh sách rehype plugins][rehype-plugins], và
+[danh sách recma plugins][recma-plugins].
 
 * [`remcohaszing/recma-export-filepath`](https://github.com/remcohaszing/recma-export-filepath)
-  — export the filepath
+  — export đường dẫn file
 * [`ipikuka/recma-mdx-change-props`](https://github.com/ipikuka/recma-mdx-change-props)
-  — changes the param as `_props` in the `_createMdxContent` function
+  — thay đổi tham số thành `_props` trong hàm `_createMdxContent`
 * [`domdomegg/recma-mdx-displayname`](https://github.com/domdomegg/recma-mdx-displayname)
-  — add a `displayName` to `MDXContent` components, to enable switching
-  on them in production
+  — thêm `displayName` vào các component `MDXContent`, để cho phép chuyển đổi
+  chúng trong production
 * [`ipikuka/recma-mdx-escape-missing-components`](https://github.com/ipikuka/recma-mdx-escape-missing-components)
-  — set a default value of `() => null` for missing components instead of
-  throwing an error
+  — đặt giá trị mặc định là `() => null` cho các component thiếu thay vì
+  ném ra lỗi
 * [`remcohaszing/recma-mdx-is-mdx-component`](https://github.com/remcohaszing/recma-mdx-is-mdx-component)
-  — add an `isMdxComponent` field on MDX components
+  — thêm trường `isMdxComponent` vào các component MDX
 * [`remcohaszing/recma-nextjs-static-props`](https://github.com/remcohaszing/recma-nextjs-static-props)
-  — generate [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
-  exposing top level identifiers in Next.js
+  — tạo [`getStaticProps`](https://nextjs.org/docs/basic-features/data-fetching/get-static-props)
+  để expose các identifier cấp cao nhất trong Next.js
 * [`remcohaszing/recma-module-to-function`](https://github.com/remcohaszing/recma-module-to-function)
-  — convert a module into a function body
+  — chuyển đổi một module thành một function body
 * [`remcohaszing/rehype-mdx-code-props`](https://github.com/remcohaszing/rehype-mdx-code-props)
-  — interpret the code `meta` field as JSX props
+  — diễn giải trường `meta` của code như JSX props
 * [`remcohaszing/rehype-mdx-import-media`](https://github.com/remcohaszing/rehype-mdx-import-media)
-  — change media sources to JavaScript imports
+  — thay đổi nguồn media thành các JavaScript imports
 * [`remcohaszing/rehype-mdx-title`](https://github.com/remcohaszing/rehype-mdx-title)
-  — expose the page title as a string
+  — expose tiêu đề trang dưới dạng string
 * [`boning-w/rehype-mdx-toc`](https://github.com/boning-w/rehype-mdx-toc)
-  — export the table of contents data into MDX module
+  — export dữ liệu mục lục vào module MDX
 * [`pangelani/remark-mdx-chartjs`](https://github.com/pangelani/remark-mdx-chartjs)
-  — replace fenced code blocks with charts using [`react-chartjs-2`](https://react-chartjs-2.js.org/).
+  — thay thế các code block có fence bằng biểu đồ sử dụng [`react-chartjs-2`](https://react-chartjs-2.js.org/).
 * [`remcohaszing/remark-mdx-frontmatter`](https://github.com/remcohaszing/remark-mdx-frontmatter)
-  — change frontmatter (YAML) metadata to exports
+  — thay đổi metadata frontmatter (YAML) thành exports
 * [`goodproblems/remark-mdx-math-enhanced`](https://github.com/goodproblems/remark-mdx-math-enhanced)
-  — enhance math with JavaScript inside it
+  — nâng cao toán học với JavaScript bên trong nó
 
 {/*
-  * Please use alpha sorting on **project** name!
-  * You can use this template:
+  * Vui lòng sắp xếp theo thứ tự bảng chữ cái theo tên **dự án**!
+  * Bạn có thể sử dụng template này:
   *
   * ```markdown
   * * [`user/project`](https://github.com/user/project)
-  *   — somewhat short description of the project
+  *   — mô tả ngắn gọn về dự án
   * ```
   */}
 
 <Note type="info">
-  **Note**: have another unified plugin that *specifically* works with MDX?
-  Please send a PR to add it here!
+  **Lưu ý**: Bạn có plugin unified khác *đặc biệt* hoạt động với MDX?
+  Vui lòng gửi PR để thêm nó vào đây!
 </Note>
 
-## Using plugins
+## Sử dụng plugins
 
-Where to pass plugins is encoded in their name:
-remark plugins go in `remarkPlugins`,
-rehype plugins go in `rehypePlugins`,
-and recma plugins go in `recmaPlugins` of
+Nơi truyền plugins được mã hóa trong tên của chúng:
+remark plugins đi vào `remarkPlugins`,
+rehype plugins đi vào `rehypePlugins`,
+và recma plugins đi vào `recmaPlugins` của
 [`ProcessorOptions`][processor-options].
-Those fields expect lists of plugins and/or of `[plugin, options]`:
+Các trường này mong đợi danh sách các plugin và/hoặc `[plugin, options]`:
 
 ```tsx twoslash
 import {compile} from '@mdx-js/mdx'
-import rehypeKatex from 'rehype-katex' // Render math with KaTeX.
-import remarkFrontmatter from 'remark-frontmatter' // YAML and such.
-import remarkGfm from 'remark-gfm' // Tables, footnotes, strikethrough, task lists, literal URLs.
-import remarkMath from 'remark-math' // Support math like `$so$`.
+import rehypeKatex from 'rehype-katex' // Render toán học với KaTeX.
+import remarkFrontmatter from 'remark-frontmatter' // YAML và tương tự.
+import remarkGfm from 'remark-gfm' // Bảng, chú thích, gạch ngang, danh sách tác vụ, URL trực tiếp.
+import remarkMath from 'remark-math' // Hỗ trợ toán học như `$so$`.
 
 const file = '# hi'
 
-// One plugin:
+// Một plugin:
 await compile(file, {remarkPlugins: [remarkGfm]})
 
-// A plugin with options:
+// Một plugin với options:
 await compile(file, {remarkPlugins: [[remarkFrontmatter, 'toml']]})
 
-// Two plugins:
+// Hai plugins:
 await compile(file, {remarkPlugins: [remarkGfm, remarkFrontmatter]})
 
-// Two plugins, first w/ options:
+// Hai plugins, cái đầu có options:
 await compile(file, {remarkPlugins: [[remarkGfm, {singleTilde: false}], remarkFrontmatter]})
 
-// remark and rehype plugins:
+// remark và rehype plugins:
 await compile(file, {rehypePlugins: [rehypeKatex], remarkPlugins: [remarkMath]})
 
-// remark and rehype plugins, last w/ options:
+// remark và rehype plugins, cái cuối có options:
 await compile(file, {
-  // A plugin with options:
+  // Một plugin với options:
   rehypePlugins: [[rehypeKatex, {strict: true, throwOnError: true}]],
   remarkPlugins: [remarkMath]
 })
 ```
 
-## Creating plugins
+## Tạo plugins
 
-Creating a plugin for MDX is mostly the same as creating a plugin for remark,
-rehype, or recma.
-There are several guides and recipes on that in [§ Learn on
+Tạo một plugin cho MDX hầu như giống với việc tạo một plugin cho remark,
+rehype, hoặc recma.
+Có nhiều hướng dẫn và công thức về điều đó trong [§ Học tại
 `unifiedjs.com`][learn].
 
-For the MDX specific parts of plugins, it’s recommended to read
-[¶ Architecture][architecture] to learn how `@mdx-js/mdx` works.
-For info on the node types that represent MDX specific features, see
-[¶ Syntax tree in `remark-mdx`][syntax-tree] and use our interactive
-[§ Playground][playground].
+Đối với các phần cụ thể của MDX trong plugins, nên đọc
+[¶ Kiến trúc][architecture] để tìm hiểu cách `@mdx-js/mdx` hoạt động.
+Để biết thông tin về các loại node đại diện cho các tính năng cụ thể của MDX, xem
+[¶ Cây cú pháp trong `remark-mdx`][syntax-tree] và sử dụng
+[§ Playground][playground] tương tác của chúng tôi.
 
 [api]: /packages/mdx/#api
 

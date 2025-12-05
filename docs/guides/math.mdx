@@ -12,15 +12,15 @@ export const navSortSelf = 3
 # Math
 
 This guide explores how to support math (LaTeX) in MDX. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-That means math is not supported by default.
+MDX hỗ trợ standard markdown syntax ([CommonMark][]).
+That means math is not supported theo mặc định.
 Math can be enabled by using a remark plugin: [`remark-math`][remark-math],
 combined with a rehype plugin: either
 [`rehype-katex`][rehype-katex] (KaTeX) or [`rehype-mathjax`][rehype-mathjax]
 (MathJax).
 Like other remark and rehype plugins, they can be passed in [`remarkPlugins`
 and `rehypePlugins`, respectively, in `ProcessorOptions`][processor-options].
-More info on plugins is available in [§ Extending MDX][extend]
+More info on plugins is available in [§ Mở rộng MDX][extend]
 
 Say we have an MDX file like this:
 
@@ -69,7 +69,7 @@ console.log(
 </details>
 
 <Note type="important">
-  **Important**: if you chose `rehype-katex`, you should also use `katex.css`
+  **Quan trọng**: if you chose `rehype-katex`, you should also use `katex.css`
   somewhere on the page to style math properly.
   At the time of writing, the last version is:
 
@@ -84,9 +84,9 @@ console.log(
 </Note>
 
 <Note type="info">
-  **Note:** see also
+  **Lưu ý:** see also
   [`remark-mdx-math-enhanced`](https://github.com/goodproblems/remark-mdx-math-enhanced),
-  which you can use to support JavaScript expressions inside of math (such as to
+  which you can use to support JavaScript expressions inside of math (chẳng hạn như to
   access properties or to make calculations)
 </Note>
 

@@ -1,8 +1,15 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     environment:
-      name: Website
-      url: ${{steps.deployment.outputs.page_url}}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       contents: read
       id-token: write
@@ -11,19 +18,25 @@ jobs:
     # <https://github.com/puppeteer/puppeteer/issues/12818>.
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v5
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: node
-      - run: npm ci
-      - run: npm run docs
-      - uses: actions/upload-pages-artifact@v4
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build documentation
+        run: npm run docs
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
         with:
           path: public
-      - uses: actions/deploy-pages@v4
+      
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
         id: deployment
-name: website
-on:
-  push:
-    branches:
-      - main

@@ -10,8 +10,8 @@ export const navSortSelf = 2
 # Frontmatter
 
 This guide explores how to support YAML frontmatter in MDX. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-That means frontmatter is not supported by default.
+MDX hỗ trợ standard markdown syntax ([CommonMark][]).
+That means frontmatter is not supported theo mặc định.
 
 MDX comes with a powerful and dynamic alternative to frontmatter, namely ESM
 (`import`/`export`).
@@ -24,7 +24,7 @@ export const title = 'Hi, ' + name + '!'
 # {title}
 ```
 
-Can be used like so:
+Can be used như sau:
 
 ```js twoslash path="example.js"
 // @filename: types.d.ts
@@ -53,7 +53,7 @@ title: Hi, World!
 # Hi, World!
 ```
 
-Then without compiling or evaluating the metadata can be accessed like so:
+Then without compiling or evaluating the metadata can be accessed như sau:
 
 ```js twoslash path="example.js"
 /// <reference types="node" />
@@ -67,7 +67,7 @@ matter(file)
 console.log(file.data.matter)
 ```
 
-Our compiler, `@mdx-js/mdx`, doesn’t understand YAML frontmatter by default but
+Our compiler, `@mdx-js/mdx`, doesn’t understand YAML frontmatter theo mặc định but
 it can be enabled by using a remark plugin,
 [`remark-frontmatter`][remark-frontmatter]:
 
@@ -90,7 +90,7 @@ Now it “works”.
 The frontmatter is not rendered as if it was markdown.
 But the data embedded in the frontmatter isn’t available from *inside* the MDX.
 What if we wanted that too?
-Like so:
+như sau:
 
 ```mdx path="example.mdx"
 ---
@@ -105,7 +105,7 @@ That’s exactly what the remark plugin
 
 That plugin, like all remark plugins, can be passed as
 [`remarkPlugins` in `ProcessorOptions`][processor-options].
-More info on plugins is available in [§ Extending MDX][extend]
+More info on plugins is available in [§ Mở rộng MDX][extend]
 
 [commonmark]: https://spec.commonmark.org/current/
 

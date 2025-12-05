@@ -13,8 +13,8 @@ export const navSortSelf = 4
 
 This guide explores how to apply syntax highlighting to code
 blocks. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-It does not apply syntax highlighting to code blocks by default.
+MDX hỗ trợ standard markdown syntax ([CommonMark][]).
+It does not apply syntax highlighting to code blocks theo mặc định.
 
 There are two ways to accomplish syntax highlighting: at compile time or at
 runtime.
@@ -63,8 +63,8 @@ console.log(
 </details>
 
 <Note type="important">
-  **Important**: you must likely also include CSS somewhere on the page.
-  See the documentation of the plugin you’re using for more information.
+  **Quan trọng**: you must likely also include CSS somewhere on the page.
+  See the documentation of the plugin you’re using để biết thêm thông tin.
 </Note>
 
 ## Syntax highlighting at run time
@@ -120,7 +120,7 @@ function code({className, ...properties}) {
 
 ## Syntax highlighting with the `meta` field
 
-Markdown supports a meta string for code:
+Markdown hỗ trợ a meta string for code:
 
 ````mdx path="example.mdx"
 ```js filename="index.js"
@@ -128,9 +128,9 @@ console.log(1)
 ```
 ````
 
-The `meta` part is everything after the language (in this case, `js`).
+The `meta` part is everything after the language (trong trường hợp này, `js`).
 This is a *hidden* part of markdown: it’s normally ignored.
-But as the above example shows, it’s a useful place to put some extra fields.
+But as the above example cho thấy, it’s a useful place to put some extra fields.
 
 `@mdx-js/mdx` doesn’t know whether you’re handling code as a component or what
 the format of that meta string is, so it defaults to how markdown handles it:
@@ -144,7 +144,7 @@ with a component for `pre`.
 
 That plugin, like all rehype plugins, can be passed as
 [`rehypePlugins` in `ProcessorOptions`][processor-options].
-More info on plugins is available in [§ Extending MDX][extend]
+More info on plugins is available in [§ Mở rộng MDX][extend]
 
 [commonmark]: https://spec.commonmark.org/current/
 

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Save Location</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 400px;
+      min-height: 300px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .header p {
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card h3 {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-item {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .info-item label {
+      display: block;
+      opacity: 0.8;
+      margin-bottom: 4px;
+      font-size: 11px;
+    }
+
+    .info-item .value {
+      font-family: 'Courier New', monospace;
+      word-break: break-all;
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .status {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .status.success {
+      background: rgba(76, 175, 80, 0.3);
+    }
+
+    .status.error {
+      background: rgba(244, 67, 54, 0.3);
+    }
+
+    .emoji {
+      font-size: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      color: white;
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>💾 Smart Save Location</h1>
+    <p>Tự động nhảy đến thư mục gốc</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="emoji">📂</span> Thông tin file hiện tại</h3>
+    <div class="info-item">
+      <label>Đường dẫn gốc:</label>
+      <div class="value" id="originalPath">Chưa mở file nào</div>
+    </div>
+    <div class="info-item">
+      <label>Thư mục:</label>
+      <div class="value" id="directory">-</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="emoji">⚙️</span> Cài đặt</h3>
+    <label style="font-size: 12px; opacity: 0.9; display: block; margin-bottom: 8px;">
+      Thư mục mặc định:
+    </label>
+    <input type="text" id="defaultPath" placeholder="e:\ubuntu\Docker\mdx-vietnamese">
+    <button class="button" id="saveSettings">💾 Lưu cài đặt</button>
+  </div>
+
+  <button class="button" id="copyPath">📋 Copy đường dẫn thư mục</button>
+  <button class="button" id="openFolder">📁 Mở thư mục trong Explorer</button>
+
+  <div class="status" id="status">
+    Sẵn sàng
+  </div>
+
+  <div class="footer">
+    v1.0.0 | Made with ❤️
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

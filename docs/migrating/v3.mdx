@@ -7,12 +7,12 @@ export const info = {
 }
 export const navExclude = true
 
-# Migrating from v2 to v3
+# Di chuyển from v2 to v3
 
 A couple small changes this time around.
 For most folks, updating Node.js and plugins is all that’s needed!
 
-## Contents
+## Nội dung
 
 * [Update Node.js](#update-nodejs)
 * [Update plugins](#update-plugins)
@@ -42,7 +42,7 @@ If you use `evaluate` or `run` (or `outputFormat: 'function-body'`), you should
 pass the `baseUrl` option.
 Likely set to `import.meta.url`.
 
-If MDX content uses `export` statements, `import` expressions/statements,
+If Nội dung MDX uses `export` statements, `import` expressions/statements,
 or `import.meta.url`, we compile to code that works, but it needs to know
 where the code runs: you need to pass where you are.
 
@@ -69,7 +69,7 @@ problems in MDX.
 If you specify `jsxRuntime: 'classic'` (and `pragma`, `pragmaFrag`,
 `pragmaImportSource`), consider switching to `automatic`.
 All major frameworks support the automatic runtime.
-Support for the classic runtime will likely be removed next major.
+Hỗ trợ for the classic runtime will likely be removed next major.
 
 ## Replace `MDXContext`, `withMDXComponents` with `useMDXComponents`
 

@@ -8,12 +8,12 @@ export const info = {
 }
 
 <Note type="legacy">
-  **Note**: This is an old blog post.
+  **Lưu ý**: This is an old blog post.
   The below is kept as is for historical purposes.
 </Note>
 
 <Note type="info">
-  **Note**: Info on how to migrate is available in our
+  **Lưu ý**: Info on how to migrate is available in our
   [Version 2 migration guide][migrating].
 </Note>
 
@@ -44,7 +44,7 @@ It’s been 4 years since this project was announced.
 **We’re proud to finally release v2!**
 Let’s dive in!
 
-## Contents
+## Nội dung
 
 * [Improvements to the MDX format](#improvements-to-the-mdx-format)
 * [Rollup, esbuild, and other integrations](#rollup-esbuild-and-other-integrations)
@@ -54,7 +54,7 @@ Let’s dive in!
 * [Breaking changes](#breaking-changes)
 * [Thanks](#thanks)
 
-## Improvements to the MDX format
+## Improvements to the Định dạng MDX
 
 We’ve spent a lot of time thinking and trying out different ways to improve the
 format.
@@ -119,8 +119,8 @@ Take for example this MDX file:
   </div>
 </div>
 
-We believe it’s more intuitive that markdown “inlines” such as emphasis can form
-between tags on the same line (first `<div>`), “blocks” such as headings can
+We believe it’s more intuitive that markdown “inlines” chẳng hạn như emphasis can form
+between tags on the same line (first `<div>`), “blocks” chẳng hạn như headings can
 form if they’re on their own line (second `<div>`), and indentation is allowed
 rather than forming code (third `<div>`).
 
@@ -155,10 +155,10 @@ As the format moves a little further from markdown towards JSX, we’ve added
 support for loading “normal” markdown without our syntax extensions.
 If you’re using our bundler integration `@mdx-js/loader` (or `@mdx-js/rollup`,
 `@mdx-js/esbuild`, or `@mdx-js/node-loader`, see next section), then that’ll
-just work: import `readme.mdx` and it’s seen as the MDX format, import
+just work: import `readme.mdx` and it’s seen as the Định dạng MDX, import
 `readme.md` and it’s seen as markdown, based on their extensions.
 
-The MDX format is described in [§ What is MDX?][what]
+The Định dạng MDX is described in [§ What is MDX?][what]
 
 ## Rollup, esbuild, and other integrations
 
@@ -170,7 +170,7 @@ They’re no longer required and MDX can more easily be used with other tools.
 On the bundler side, we’ve added new integrations: `@mdx-js/esbuild` for
 esbuild (an extremely fast bundler) and `@mdx-js/rollup` for Rollup (a bundler
 that’s also used in Vite and WMR).
-You can even import MDX files directly in Node.js with our new
+Bạn có thể even import MDX files directly in Node.js with our new
 `@mdx-js/node-loader`.
 
 On the runtime side, we can now compile JSX away to normal JavaScript and
@@ -179,12 +179,12 @@ Now any JSX runtime, whether [classic or automatic][jsx-runtime], is supported.
 This means MDX can be used with React, Preact, Vue, Emotion, Theme UI, Ink, you
 name it, plus anything that’s yet to be invented!
 
-See [§ Getting started][getting-started] for a quick start but also in-depth
+See [§ Bắt đầu][getting-started] for a quick start but also in-depth
 info on how to integrate MDX with many different tools.
 
 ## Architectural improvements
 
-To make the syntax of the MDX format better and to allow new integrations and
+To make the syntax of the Định dạng MDX better and to allow new integrations and
 arbitrary JSX runtimes, we’ve rewritten almost everything.
 Part of that effort was [micromark][], which is another story, but it means
 we’re fully CommonMark (and optionally GFM) compliant, while also understanding
@@ -193,9 +193,9 @@ more about MDX files.
 Now we can throw an early error when there’s a typo and point to exactly where
 it happened, instead of a later bundler like webpack complaining about an error
 in an intermediate, unrecognizable, and broken string of JavaScript.
-It also means that we have a new AST which describes the MDX syntax in more
+It also means that we have a new AST which mô tả the Cú pháp MDX in more
 detail — we even expose the embedded JavaScript.
-This detailed AST allows plugins to enhance MDX in powerful new ways.
+This detailed AST cho phép plugins to enhance MDX in powerful new ways.
 It also helped solve edge cases where MDX would previously crash.
 And it let us drop Babel.
 
@@ -205,7 +205,7 @@ that runs twice as fast (**100% faster**), and that the bundle size of
 
 See [¶ Architecture in `@mdx-js/mdx`][architecture] for more on how our compiler
 works.
-See [§ Extending MDX][extending] for several plugins that use the new tree to
+See [§ Mở rộng MDX][extending] for several plugins that use the new tree to
 enhance MDX, how to use them and other plugins, and how to create plugins.
 
 ## TypeScript
@@ -217,13 +217,13 @@ are type safe internally.
 
 We’ve published [`@types/mdx`][types-mdx], a types-only package that can be used
 with any (community) integration.
-You can use it, if you’re importing MDX files, to type those imported
+Bạn có thể use it, if you’re importing MDX files, to type those imported
 components.
 
-See [¶ TypeScript in § Getting started][ts] for more on how to use configure
+See [¶ TypeScript in § Bắt đầu][ts] for more on how to use configure
 TypeScript.
 
-## Docs & site
+## Tài liệu & site
 
 MDX is used and liked a lot.
 Before version 1 we had amassed a total of **2.5m downloads**.
@@ -250,9 +250,9 @@ client-side apps, is the smart choice for us and the web’s future.
 
 Our new site is heavily optimized and fast, gorgeous (subjective but hey), has
 rich metadata, and scores very well in performance and accessibility review
-tools such as Lighthouse and axe.
+tools chẳng hạn như Lighthouse and axe.
 
-See [§ Contribute][contribute] for more on how to help.
+See [§ Đóng góp][contribute] for more on how to help.
 
 ## Breaking changes
 

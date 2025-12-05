@@ -9,15 +9,15 @@ export const info = {
 }
 export const navSortSelf = 3
 
-# Using MDX
+# Sử dụng MDX
 
-This article explains how to use MDX files in your project.
-It shows how you can pass props and how to import, define, or pass components. {/* more */}
-See [§ Getting started][start] for how to integrate MDX into your project.
-To understand how the MDX format works, we recommend that you start with
+Bài viết này giải thích how to use MDX files in your project.
+It cho thấy how you can pass props and how to import, define, or pass components. {/* more */}
+See [§ Bắt đầu][start] for how to integrate MDX into your project.
+To understand how the Định dạng MDX works, we recommend that you start with
 [§ What is MDX][what].
 
-## Contents
+## Nội dung
 
 * [How MDX works](#how-mdx-works)
 * [MDX content](#mdx-content)
@@ -26,9 +26,9 @@ To understand how the MDX format works, we recommend that you start with
   * [Layout](#layout)
 * [MDX provider](#mdx-provider)
 
-## How MDX works
+## MDX hoạt động như thế nào
 
-An integration compiles MDX syntax to JavaScript.
+An integration compiles Cú pháp MDX to JavaScript.
 Say we have an MDX document, `example.mdx`:
 
 ```mdx path="input.mdx"
@@ -94,16 +94,16 @@ Some more observations:
   something else for the heading
 
 † MDX is not coupled to React.
-You can also use it with [Preact][],
+Bạn có thể also use it with [Preact][],
 [Vue][], [Emotion][],
 [Theme UI][],
 etc.
 Both the classic and automatic JSX runtimes are supported.
 
-## MDX content
+## Nội dung MDX
 
 We just saw that MDX files are compiled to components.
-You can use those components like any other component in your framework of
+Bạn có thể use those components like any other component in your framework of
 choice.
 Take this file:
 
@@ -111,7 +111,7 @@ Take this file:
 # Hi!
 ```
 
-It could be imported and used in a React app like so:
+It could be imported and used in a React app như sau:
 
 ```jsx twoslash path="example.jsx"
 // @filename: types.d.ts
@@ -209,7 +209,7 @@ console.log(<Example name="Mars" year={2022} />)
 ```
 
 <Note type="info">
-  **Note**:
+  **Lưu ý**:
   Users of the MDX VS Code extension can add type
   checking of `props` with a JSDoc comment.
   See [`mdx-js/mdx-analyzer`][mdx-analyzer] for more info.
@@ -225,7 +225,7 @@ Take this example:
 # Hello *<Planet />*
 ```
 
-It can be imported from JavaScript and passed components like so:
+It can be imported from JavaScript and passed components như sau:
 
 ```jsx twoslash path="example.jsx"
 // @filename: types.d.ts
@@ -248,7 +248,7 @@ console.log(
 ```
 
 You don’t have to pass components.
-You can also define or import them within MDX:
+Bạn có thể also define or import them within MDX:
 
 ```mdx path="example.mdx"
 import {Box, Heading} from 'rebass'
@@ -316,7 +316,7 @@ console.log(
 
 The following keys can be passed in `components`:
 
-* HTML equivalents for the things you write with markdown such as `h1` for
+* HTML equivalents for the things you write with markdown chẳng hạn như `h1` for
   `# heading` (see [§ Table of components][toc] for examples)
 * `wrapper`, which defines the layout (but a local layout takes precedence)
 * anything else that is a valid JSX identifier (`foo`, `Quote`,
@@ -325,7 +325,7 @@ The following keys can be passed in `components`:
   precedence)**‡**
 
 **‡** The rules for whether a name in JSX (so `x` in `<x>`) is a literal tag
-name (like `h1`) or not (like `Component`) are as follows:
+name (like `h1`) or not (like `Component`) are như sau:
 
 * if there’s a dot,
   it’s a member expression (`<a.b>` → `h(a.b)`),
@@ -340,7 +340,7 @@ name (like `h1`) or not (like `Component`) are as follows:
   it’s a reference (`<A>` → `h(A)`)
 
 These keys in `components` and the difference between literal tag names and
-references is illustrated as follows.
+references is illustrated như sau.
 With the following MDX:
 
 ```mdx path="example.mdx"
@@ -427,7 +427,7 @@ Take for example this file:
 # Hello world
 ```
 
-Used like so:
+Used như sau:
 
 ```jsx twoslash path="app.jsx"
 // @filename: components.d.ts
@@ -459,7 +459,7 @@ That works, those components are used.
 
 But when you’re nesting MDX files (importing them into each other) it can become
 cumbersome.
-Like so:
+như sau:
 
 ```mdx path="post.mdx"
 import License from './license.md' // Assumes an integration is used to compile markdown -> JS.
@@ -475,9 +475,9 @@ import Contributing from './docs/contributing.mdx'
 ```
 
 To solve this, a *[context][]* can be used in React, Preact, and Vue.
-Context provides a way to pass data through the component tree without having to
+Context cung cấp a way to pass data through the component tree without having to
 pass props down manually at every level.
-Set it up like so:
+Set it up như sau:
 
 1. Install either [`@mdx-js/react`][mdx-react], [`@mdx-js/preact`][mdx-preact],
    or [`@mdx-js/vue`][mdx-vue],
@@ -487,7 +487,7 @@ Set it up like so:
    set to that package, so either `'@mdx-js/react'`, `'@mdx-js/preact'`, or
    `'@mdx-js/vue'`
 3. Import `MDXProvider` from that package.
-   Use it to wrap your top-most MDX content component and pass it your
+   Use it to wrap your top-most Nội dung MDX component and pass it your
    `components` instead:
 
 ```diff

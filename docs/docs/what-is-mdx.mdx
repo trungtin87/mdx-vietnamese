@@ -10,43 +10,43 @@ export const info = {
 }
 export const navSortSelf = 1
 
-# What is MDX?
+# MDX là gì?
 
-This article explains what the MDX format is.
-It shows how markdown, JSX, JavaScript expressions, and `import` and
-`export` statements in ESM can be used inside MDX. {/* more */}
-See [§ Getting started][start] for details on how to integrate MDX into your
-project.
-See [§ Using MDX][use] when you’re already all set up to use MDX.
+Bài viết này giải thích định dạng MDX là gì.
+Nó cho thấy cách markdown, JSX, biểu thức JavaScript, và các câu lệnh `import` và
+`export` trong ESM có thể được sử dụng bên trong MDX. {/* more */}
+Xem [§ Bắt đầu][start] để biết chi tiết về cách tích hợp MDX vào dự án
+của bạn.
+Xem [§ Sử dụng MDX][use] khi bạn đã sẵn sàng để sử dụng MDX.
 
-## Contents
+## Nội dung
 
-* [Prerequisites](#prerequisites)
-* [Markdown for the component era](#markdown-for-the-component-era)
-* [MDX syntax](#mdx-syntax)
+* [Điều kiện tiên quyết](#prerequisites)
+* [Markdown cho kỷ nguyên component](#markdown-for-the-component-era)
+* [Cú pháp MDX](#mdx-syntax)
   * [Markdown](#markdown)
   * [JSX](#jsx)
-  * [Expressions](#expressions)
+  * [Biểu thức](#expressions)
   * [ESM](#esm)
-  * [Interleaving](#interleaving)
-* [Further reading](#further-reading)
+  * [Xen kẽ](#interleaving)
+* [Đọc thêm](#further-reading)
 
-## Prerequisites
+## Điều kiện tiên quyết
 
-To write and enjoy MDX, you should be familiar with both markdown
-(see this [cheat sheet and tutorial][commonmark-help] for help) and
-JavaScript (specifically [JSX][jsx-spec]).
+Để viết và tận hưởng MDX, bạn nên quen thuộc với cả markdown
+(xem [cheat sheet và hướng dẫn][commonmark-help] này để được trợ giúp) và
+JavaScript (cụ thể là [JSX][jsx-spec]).
 
-## Markdown for the component era
+## Markdown cho kỷ nguyên component
 
-MDX allows you to use JSX in your markdown content.
-You can import components, such as interactive charts or alerts, and embed them
-within your content.
-This makes writing long-form content with components a blast.
+MDX cho phép bạn sử dụng JSX trong nội dung markdown của mình.
+Bạn có thể import các component, chẳng hạn như biểu đồ tương tác hoặc cảnh báo, và nhúng chúng
+vào trong nội dung của bạn.
+Điều này làm cho việc viết nội dung dài với các component trở nên tuyệt vời.
 🚀
 
-More practically MDX can be explained as a format that combines markdown with
-JSX and looks as follows:
+Thực tế hơn, MDX có thể được giải thích là một định dạng kết hợp markdown với
+JSX và trông như sau:
 
 ```mdx
 # Hello, world!
@@ -56,47 +56,47 @@ JSX and looks as follows:
 </div>
 ```
 
-The heading and block quote are markdown, while those *HTML-like tags* are JSX.
-Markdown often feels more natural to type than HTML or JSX for common things
-like emphasis or headings.
-JSX is an extension to JavaScript that *looks* like HTML but makes it convenient
-to use components (reusable things).
+Tiêu đề và block quote là markdown, trong khi những *thẻ giống HTML* đó là JSX.
+Markdown thường cảm thấy tự nhiên hơn để gõ so với HTML hoặc JSX cho những thứ phổ biến
+như nhấn mạnh hoặc tiêu đề.
+JSX là một phần mở rộng cho JavaScript *trông* giống HTML nhưng làm cho việc
+sử dụng các component (những thứ có thể tái sử dụng) trở nên thuận tiện.
 
-This example uses `className` on the `<div>`.
-That’s because it was written for React and React expects classes that way.
-Other frameworks, such as Vue and Preact, expect classes to be defined
-differently, so note that there are some differences in how JSX has to be
-authored depending on what tools it’s used with.
+Ví dụ này sử dụng `className` trên `<div>`.
+Đó là vì nó được viết cho React và React mong đợi các class theo cách đó.
+Các framework khác, chẳng hạn như Vue và Preact, mong đợi các class được định nghĩa
+khác nhau, vì vậy lưu ý rằng có một số khác biệt trong cách JSX phải được
+viết tùy thuộc vào công cụ nào được sử dụng với nó.
 
-A few other features from JavaScript are supported in MDX as well: expressions
-in braces (`{1 + 1}`) and ESM (`import` and `export`).
+Một số tính năng khác từ JavaScript cũng được hỗ trợ trong MDX: biểu thức
+trong dấu ngoặc nhọn (`{1 + 1}`) và ESM (`import` và `export`).
 
-## MDX syntax
+## Cú pháp MDX
 
 <Note type="info">
-  **Note**:
-  You don’t have to use this syntax with `@mdx-js/*` packages.
-  Or use it always.
-  If you’re using a bundler integration you can change between MDX and
-  markdown through the file extension (`.mdx` vs. `.md`).
-  Alternatively, `options.format` can be used.
+  **Lưu ý**:
+  Bạn không phải sử dụng cú pháp này với các gói `@mdx-js/*`.
+  Hoặc luôn sử dụng nó.
+  Nếu bạn đang sử dụng tích hợp bundler, bạn có thể thay đổi giữa MDX và
+  markdown thông qua phần mở rộng file (`.mdx` vs. `.md`).
+  Ngoài ra, `options.format` có thể được sử dụng.
 </Note>
 
-The MDX syntax combines markdown with JSX.
-This gives us something along the lines of literate programming.
-It also gives us an odd mix of two languages: markdown is **whitespace
-sensitive** and **forgiving** (what you type may not exactly work but it
-won’t crash) whereas JavaScript is **whitespace insensitive** and
-**unforgiving** (it does crash on typos).
+Cú pháp MDX kết hợp markdown với JSX.
+Điều này mang lại cho chúng ta một cái gì đó theo hướng lập trình văn học.
+Nó cũng mang lại cho chúng ta một sự kết hợp kỳ lạ của hai ngôn ngữ: markdown **nhạy cảm
+với khoảng trắng** và **tha thứ** (những gì bạn gõ có thể không hoạt động chính xác nhưng nó
+sẽ không crash) trong khi JavaScript **không nhạy cảm với khoảng trắng** và
+**không tha thứ** (nó sẽ crash khi gõ sai).
 
-Weirdly enough we quite like how they combine!
+Kỳ lạ thay, chúng tôi khá thích cách chúng kết hợp!
 
 ### Markdown
 
-Markdown often feels more natural to type than HTML or JSX for common things
-like emphasis or headings.
-Markdown typically looks more like what’s intended and is terser.
-Instead of the following HTML:
+Markdown thường cảm thấy tự nhiên hơn để gõ so với HTML hoặc JSX cho những thứ phổ biến
+như nhấn mạnh hoặc tiêu đề.
+Markdown thường trông giống với những gì dự định hơn và ngắn gọn hơn.
+Thay vì HTML sau:
 
 ```html
 <blockquote>
@@ -104,13 +104,13 @@ Instead of the following HTML:
 </blockquote>
 ```
 
-You can write the equivalent in markdown (or MDX) like so:
+Bạn có thể viết tương đương trong markdown (hoặc MDX) như sau:
 
 ```md
 > A blockquote with *some* emphasis.
 ```
 
-MDX supports standard markdown by default ([CommonMark][]):
+MDX hỗ trợ markdown tiêu chuẩn theo mặc định ([CommonMark][]):
 
 ````md
 # Heading (rank 1)
@@ -140,17 +140,17 @@ a [link](https://example.com), an ![image](./image.png), some *emphasis*,
 something **strong**, and finally a little `code()`.
 ````
 
-Nonstandard markdown features (such as GFM, frontmatter, math, syntax
-highlighting) can be enabled with plugins (see
-[¶ Using plugins][using-plugins]).
+Các tính năng markdown không chuẩn (chẳng hạn như GFM, frontmatter, toán học, tô sáng
+cú pháp) có thể được bật với các plugin (xem
+[¶ Sử dụng plugins][using-plugins]).
 
-Some markdown features don’t work in MDX:
+Một số tính năng markdown không hoạt động trong MDX:
 
-* Indented code does not work in MDX:
+* Code thụt lề không hoạt động trong MDX:
   ```mdx
-      console.log(1) // this is a paragraph in MDX!
+      console.log(1) // đây là một đoạn văn trong MDX!
   ```
-  The reason for that is so you can nicely indent your components:
+  Lý do là để bạn có thể thụt lề các component của mình một cách đẹp mắt:
   ```mdx
   <main>
     <article>
@@ -158,45 +158,45 @@ Some markdown features don’t work in MDX:
     </article>
   </main>
   ```
-* Autolinks do not work in MDX.
-  The reason is that they can be indistinguishable from JSX (for example:
-  `<svg:rect>`) and we prefer being explicit.
-  If you want links, use full links:
+* Autolink không hoạt động trong MDX.
+  Lý do là chúng có thể không phân biệt được với JSX (ví dụ:
+  `<svg:rect>`) và chúng tôi thích rõ ràng.
+  Nếu bạn muốn link, hãy sử dụng link đầy đủ:
   `[descriptive text](https://and-the-link-here.com)`
-* HTML syntax doesn’t work in MDX as it’s replaced by JSX (`<img>` to
+* Cú pháp HTML không hoạt động trong MDX vì nó được thay thế bằng JSX (`<img>` thành
   `<img />`).
-  Instead of HTML comments, you can use JavaScript comments in braces:
+  Thay vì comment HTML, bạn có thể sử dụng comment JavaScript trong dấu ngoặc nhọn:
   `{/* comment! */}`
-* Unescaped left angle bracket / less than (`<`) and left curly brace (`{`)
-  have to be escaped: `\<` or `\{` (or use expressions: `{'<'}`, `{'{'}`)
+* Dấu ngoặc nhọn trái / nhỏ hơn (`<`) và dấu ngoặc nhọn trái (`{`) không được escape
+  phải được escape: `\<` hoặc `\{` (hoặc sử dụng biểu thức: `{'<'}`, `{'{'}`)`
 
-More on how MDX differs from markdown is
-[documented here](https://github.com/micromark/mdx-state-machine#72-deviations-from-markdown).
+Thêm về cách MDX khác với markdown được
+[ghi chép ở đây](https://github.com/micromark/mdx-state-machine#72-deviations-from-markdown).
 
 ### JSX
 
-[JSX][] is an extension to JavaScript that *looks* like HTML but makes it
-convenient to use components (reusable things).
-JSX is typically combined with a frontend framework like React, Preact, or Vue.
-These frameworks add support for components, which let you change repeating
-things like the following markup:
+[JSX][] là một phần mở rộng cho JavaScript *trông* giống HTML nhưng làm cho việc
+sử dụng các component (những thứ có thể tái sử dụng) trở nên thuận tiện.
+JSX thường được kết hợp với một framework frontend như React, Preact, hoặc Vue.
+Các framework này thêm hỗ trợ cho các component, cho phép bạn thay đổi những thứ
+lặp lại như markup sau:
 
 ```html
 <h2>Hello, Venus!</h2>
 <h2>Hello, Mars!</h2>
 ```
 
-…to JSX (or MDX) like this:
+…thành JSX (hoặc MDX) như thế này:
 
 ```mdx
 <Welcome name="Venus" />
 <Welcome name="Mars" />
 ```
 
-JSX is good for **components**.
-It makes repeating things more clear and allows for separation of concerns.
-MDX supports JSX syntax.
-The following looks a lot like HTML:
+JSX tốt cho **components**.
+Nó làm cho những thứ lặp lại rõ ràng hơn và cho phép tách biệt các mối quan tâm.
+MDX hỗ trợ cú pháp JSX.
+Sau đây trông rất giống HTML:
 
 ```mdx
 <h1>Heading!</h1>
@@ -208,10 +208,10 @@ The following looks a lot like HTML:
 </section>
 ```
 
-But as previously mentioned you can use components too.
-Note that components must be defined.
-You can import them, define them locally, or pass them in later (see
-[§ Using MDX][use]):
+Nhưng như đã đề cập trước đó, bạn cũng có thể sử dụng các component.
+Lưu ý rằng các component phải được định nghĩa.
+Bạn có thể import chúng, định nghĩa chúng cục bộ, hoặc truyền chúng vào sau (xem
+[§ Sử dụng MDX][use]):
 
 ```mdx
 <MyComponent id="123" />
@@ -227,20 +227,20 @@ the `myComponents` object: <myComponents.thisOne />
 />
 ```
 
-There are a few edge cases
-[where MDX differs from JSX](https://github.com/micromark/mdx-state-machine#73-deviations-from-jsx).
+Có một số trường hợp đặc biệt
+[nơi MDX khác với JSX](https://github.com/micromark/mdx-state-machine#73-deviations-from-jsx).
 
-### Expressions
+### Biểu thức
 
-MDX also supports JavaScript expressions inside curly braces:
+MDX cũng hỗ trợ biểu thức JavaScript bên trong dấu ngoặc nhọn:
 
 ```mdx
 Two 🍰 is: {Math.PI * 2}
 ```
 
-Expressions can contain whole JavaScript programs as long as they’re
-(wrapped in) an expression that evaluates to something that can be rendered.
-You can use an [IIFE][] like so:
+Biểu thức có thể chứa toàn bộ chương trình JavaScript miễn là chúng
+(được bao bọc trong) một biểu thức đánh giá thành một cái gì đó có thể được render.
+Bạn có thể sử dụng một [IIFE][] như sau:
 
 ```mdx
 {(function () {
@@ -258,7 +258,7 @@ You can use an [IIFE][] like so:
 })()}
 ```
 
-Expressions can be empty or contain just a comment:
+Biểu thức có thể trống hoặc chỉ chứa một comment:
 
 ```mdx
 {/* A comment! */}
@@ -266,8 +266,8 @@ Expressions can be empty or contain just a comment:
 
 ### ESM
 
-MDX supports `import` and `export` statements from JavaScript as well.
-These ESM features can be used within MDX to define things:
+MDX hỗ trợ các câu lệnh `import` và `export` từ JavaScript.
+Các tính năng ESM này có thể được sử dụng trong MDX để định nghĩa mọi thứ:
 
 ```mdx
 import {External} from './some/place.js'
@@ -277,7 +277,7 @@ export const Local = properties => <span style={{color: 'red'}} {...properties} 
 An <External>external</External> component and a <Local>local one</Local>.
 ```
 
-ESM can also be used for non-components (data):
+ESM cũng có thể được sử dụng cho non-components (dữ liệu):
 
 ```mdx
 import {Chart} from './chart.js'
@@ -287,18 +287,18 @@ export const pi = 3.14
 <Chart data={population} label={'Something with ' + pi} />
 ```
 
-### Interleaving
+### Xen kẽ
 
-You can use markdown “inlines” but not “blocks” inside JSX if the text and tags
-are on the same line:
+Bạn có thể sử dụng markdown "inlines" nhưng không phải "blocks" bên trong JSX nếu văn bản và thẻ
+ở trên cùng một dòng:
 
 ```mdx
 <div># this is not a heading but *this* is emphasis</div>
 ```
 
-Text and tags on one line don’t produce blocks so they don’t produce `<p>`s
-either.
-On separate lines, they do:
+Văn bản và thẻ trên một dòng không tạo ra blocks nên chúng không tạo ra `<p>`
+nữa.
+Trên các dòng riêng biệt, chúng làm:
 
 ```mdx
 <div>
@@ -306,21 +306,21 @@ On separate lines, they do:
 </div>
 ```
 
-We differentiate using this rule (same line or not).
-Not based on semantics of elements in HTML.
-So you *can* build incorrect HTML (which you shouldn’t):
+Chúng tôi phân biệt bằng cách sử dụng quy tắc này (cùng dòng hay không).
+Không dựa trên ngữ nghĩa của các phần tử trong HTML.
+Vì vậy, bạn *có thể* xây dựng HTML không chính xác (mà bạn không nên):
 
 ```mdx
 <h1 className="main">
-  Don’t do this: it’s a `p` in an `h1`
+  Don't do this: it's a `p` in an `h1`
 </h1>
 
 <h1 className="main">Do this: an `h1` with `code`</h1>
 ```
 
-It’s not possible to wrap “blocks” if text and tags are on the same line but the
-corresponding opening and closing tags are in different blocks
-(so this is invalid!):
+Không thể bao bọc "blocks" nếu văn bản và thẻ ở trên cùng một dòng nhưng
+các thẻ mở và đóng tương ứng ở trong các block khác nhau
+(vì vậy điều này không hợp lệ!):
 
 ```mdx-invalid chrome=no
 Welcome! <a href="about.html">
@@ -330,18 +330,18 @@ This is home of...
 # The Falcons!</a>
 ```
 
-To parse markdown, we first have to divide it into “blocks”.
-So in this case two paragraphs and a heading.
-Leaving an opening `a` tag in the first paragraph and a closing `a` tag in
-the heading.
-Which causes an error as it is misnested.
+Để phân tích markdown, trước tiên chúng ta phải chia nó thành "blocks".
+Vì vậy, trong trường hợp này là hai đoạn văn và một tiêu đề.
+Để lại một thẻ `a` mở trong đoạn văn đầu tiên và một thẻ `a` đóng trong
+tiêu đề.
+Điều này gây ra lỗi vì nó bị lồng sai.
 
-## Further reading
+## Đọc thêm
 
-* If you want to use MDX in your project, see [§ Getting started][start];
-  see [§ Using MDX][use] when you’re already all set up
-* If you’re getting errors when working with the format, see
-  [§ Troubleshooting MDX][trouble]
+* Nếu bạn muốn sử dụng MDX trong dự án của mình, xem [§ Bắt đầu][start];
+  xem [§ Sử dụng MDX][use] khi bạn đã sẵn sàng
+* Nếu bạn gặp lỗi khi làm việc với định dạng, xem
+  [§ Khắc phục sự cố MDX][trouble]
 
 [commonmark]: https://commonmark.org
 

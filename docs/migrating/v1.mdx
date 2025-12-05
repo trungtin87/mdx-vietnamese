@@ -10,12 +10,12 @@ export const info = {
 export const navExclude = true
 
 <Note type="legacy">
-  **Note**: This is an old migration guide.
-  See [§ Migrating from v1 to v2](/migrating/v2/).
+  **Lưu ý**: This is an old migration guide.
+  See [§ Di chuyển from v1 to v2](/migrating/v2/).
   The below is kept as is for historical purposes.
 </Note>
 
-# Migrating from v0 to v1
+# Di chuyển from v0 to v1
 
 Unfortunately, we’ve had to introduce a few breaking changes, so we’ve written a
 migration guide.
@@ -46,7 +46,7 @@ inspired by
 [Emotion](https://emotion.sh/docs/css-prop#jsx-pragma).
 This ensures that transpiled JSX is more readable and that JSX blocks use the
 same component as its markdown counterpart.
-It also allows MDXProvider to provide global component scope like a `Youtube`
+It also cho phép MDXProvider to provide global component scope like a `Youtube`
 component.
 
 The pragma implementation will also cause JSX HTML elements to be rendered with
@@ -65,7 +65,7 @@ So, the following will result in two identically rendered `h1`s:
 
 This shouldn’t affect most usecases, however if you’re nesting component
 contexts and rely on them not being merged you will have to use the functional
-form which allows you to customize the merge.
+form which cho phép you to customize the merge.
 By ignoring outer context components and returning a new component mapping, you
 will restore the old behavior:
 

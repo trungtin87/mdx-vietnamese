@@ -35,39 +35,39 @@ export const year = 2023
 
 {/* lint disable heading-style */}
 
-Markdown for the\
-**component era**
+Markdown cho\
+**kỷ nguyên component**
 =================
 
-MDX lets you use JSX in your markdown content.
-You can import components, such as interactive charts or alerts, and embed them
-within your content.
-This makes writing long-form content with components a blast. {/* more */}
+MDX cho phép bạn sử dụng JSX trong nội dung markdown của mình.
+Bạn có thể import các component, chẳng hạn như biểu đồ tương tác hoặc cảnh báo, và nhúng chúng
+vào trong nội dung của bạn.
+Điều này làm cho việc viết nội dung dài với các component trở nên tuyệt vời. {/* more */}
 🚀
-[Continue reading »][what]
+[Đọc tiếp »][what]
 
 <div className="card big">
-  ## New: MDX 3!
+  ## Mới: MDX 3!
 
-  A small major this time, nothing big, which is also nice sometimes!
-  This mainly drops support for old Node (use 16 or later), adds modern ES2024
-  support in MDX, supports `await` in MDX (if your framework does too), and
-  removes several deprecated options.
+  Một bản cập nhật nhỏ lần này, không có gì lớn, điều này đôi khi cũng tốt!
+  Phiên bản này chủ yếu ngừng hỗ trợ Node cũ (sử dụng 16 trở lên), thêm hỗ trợ ES2024
+  hiện đại trong MDX, hỗ trợ `await` trong MDX (nếu framework của bạn cũng hỗ trợ), và
+  loại bỏ một số tùy chọn đã lỗi thời.
 
-  [Continue reading »][v3]
+  [Đọc tiếp »][v3]
 </div>
 
-## What does MDX do?
+## MDX làm gì?
 
 <div className="big-columns">
   <div>
-    You write markdown with embedded components through JSX:
+    Bạn viết markdown với các component được nhúng thông qua JSX:
 
     ```mdx path="example.mdx"
     import {Chart} from './snowfall.js'
     export const year = 2023
 
-    # Last year’s snowfall
+    # Last year's snowfall
 
     In {year}, the snowfall was above average.
     It was followed by a warm spring which caused
@@ -78,13 +78,13 @@ This makes writing long-form content with components a blast. {/* more */}
   </div>
 
   <div>
-    It gets compiled to JavaScript that you can use in any framework that
-    supports JSX:
+    Nó được biên dịch thành JavaScript mà bạn có thể sử dụng trong bất kỳ framework nào
+    hỗ trợ JSX:
 
     {/* lint disable no-multiple-toplevel-headings */}
 
     <div className="home-preview">
-      # Last year’s snowfall
+      # Last year's snowfall
 
       In {year}, the snowfall was above average.
       It was followed by a warm spring which caused flood conditions in many of
@@ -97,31 +97,31 @@ This makes writing long-form content with components a blast. {/* more */}
   </div>
 </div>
 
-We made an interactive playground where you can try MDX out and see what it
-turns into.
-[Play »][playground]
+Chúng tôi đã tạo một playground tương tác nơi bạn có thể thử MDX và xem nó
+chuyển đổi thành gì.
+[Chơi thử »][playground]
 
-## Get started
+## Bắt đầu
 
-There are integrations for most bundlers, frameworks, and editors.
-Whether you build with Docusaurus, Next.js, or Vite.
-You prefer Rollup, esbuild, or webpack.
-You’re using React, Preact, or Vue.
-[Get started »][getting-started]
+Có các tích hợp cho hầu hết các bundler, framework và editor.
+Dù bạn xây dựng với Docusaurus, Next.js, hay Vite.
+Bạn thích Rollup, esbuild, hay webpack.
+Bạn đang sử dụng React, Preact, hay Vue.
+[Bắt đầu »][getting-started]
 
-## MDX in short
+## MDX tóm tắt
 
 <div className="emoji-list">
-  * ❤️ **Powerful**: MDX blends markdown and JSX syntax to fit perfectly in
-    JSX-based projects
-  * 💻 **Everything is a component**: Use existing components in your
-    MDX and import other MDX files as components
-  * 🔧 **Customizable**: Decide which component is rendered for each markdown
-    construct (`{h1: MyHeading}`)
-  * 📚 **Markdown-based**: The simplicity and elegance of markdown remains,
-    you use JSX only when you want to
-  * 🔥 **Blazingly blazing fast**: MDX has no runtime, all compilation occurs
-    during the build stage
+  * ❤️ **Mạnh mẽ**: MDX kết hợp cú pháp markdown và JSX để phù hợp hoàn hảo trong
+    các dự án dựa trên JSX
+  * 💻 **Mọi thứ đều là component**: Sử dụng các component hiện có trong
+    MDX của bạn và import các file MDX khác dưới dạng component
+  * 🔧 **Có thể tùy chỉnh**: Quyết định component nào được render cho mỗi cấu trúc
+    markdown (`{h1: MyHeading}`)
+  * 📚 **Dựa trên Markdown**: Sự đơn giản và thanh lịch của markdown vẫn còn,
+    bạn chỉ sử dụng JSX khi muốn
+  * 🔥 **Cực kỳ nhanh**: MDX không có runtime, tất cả quá trình biên dịch xảy ra
+    trong giai đoạn build
 </div>
 
 > lol mdx is so good

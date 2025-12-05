@@ -10,14 +10,14 @@ export const info = {
 export const navExclude = true
 
 <Note type="legacy">
-  **Note**: This is an old migration guide.
-  See [§ Migrating from v2 to v3](/migrating/v3/).
+  **Lưu ý**: This is an old migration guide.
+  See [§ Di chuyển from v2 to v3](/migrating/v3/).
   The below is kept as is for historical purposes.
 </Note>
 
-# Migrating from v1 to v2
+# Di chuyển from v1 to v2
 
-## Contents
+## Nội dung
 
 * [ESM](#esm)
 * [Update `@mdx-js/*` packages](#update-mdx-js-packages)
@@ -43,13 +43,13 @@ When upgrading to version 2, you might run into import problems.
 Our packages are now ESM only.
 You have to load them with `import foo from 'foo'` instead of
 `const foo = require('foo')`.
-Please see [¶ ESM in § Troubleshooting MDX][trouble-esm].
+Please see [¶ ESM in § Khắc phục sự cố MDX][trouble-esm].
 
 ## Update `@mdx-js/*` packages
 
 You need to make changes when upgrading some `mdx-js/*` packages.
 In this section we will discuss the needed changes for each package.
-If you’re experiencing problems, please see [§ Troubleshooting MDX][trouble]
+If you’re experiencing problems, please see [§ Khắc phục sự cố MDX][trouble]
 for common errors and how to solve them.
 
 ### `@mdx-js/loader`
@@ -106,7 +106,7 @@ Then install MDX version 2:
 npm install @mdx-js/loader @mdx-js/react remark-gfm
 ```
 
-You can update your code as follows:
+Bạn có thể update your code như sau:
 
 <div className="big-columns">
   <div>
@@ -171,7 +171,7 @@ You can update your code as follows:
 </div>
 
 The above changes get MDX 2 close to how MDX 1 worked.
-You can make it simpler:
+Bạn có thể make it simpler:
 
 * [`babel-loader`][babel-loader] is optional.
   It compiles modern JavaScript to JavaScript your users support.
@@ -186,9 +186,9 @@ You can make it simpler:
   It adds support for context based components passing.
   If you don’t need that, you can uninstall it and remove
   `options.providerImportSource`.
-  More info in [¶ MDX provider in § Using MDX][mdx-provider]
+  More info in [¶ MDX provider in § Sử dụng MDX][mdx-provider]
 
-`@mdx-js/loader` now supports Preact and other JSX runtimes through
+`@mdx-js/loader` now hỗ trợ Preact and other JSX runtimes through
 configuration.
 Using Preact as an example:
 
@@ -206,7 +206,7 @@ Using Preact as an example:
 // …
 ```
 
-For more information, please see [§ API in `@mdx-js/loader`][loader-api].
+để biết thêm thông tin, please see [§ API in `@mdx-js/loader`][loader-api].
 
 ###### Changes
 
@@ -218,7 +218,7 @@ The options accepted by the loader changed:
 * Other options were undocumented but passed to `@mdx-js/mdx`.
   See `@mdx-js/mdx` below if needed
 
-For more information, please see [§ API in `@mdx-js/loader`][loader-api].
+để biết thêm thông tin, please see [§ API in `@mdx-js/loader`][loader-api].
 
 ### `@mdx-js/react`, `@mdx-js/preact`, `@mdx-js/vue`
 
@@ -232,17 +232,17 @@ Then install version 2:
 npm install @mdx-js/react # Change `react` to `preact` or `vue` if needed
 ```
 
-Note that these packages now only add support for context based components
+Lưu ý that these packages now only add support for context based components
 passing.
 If you don’t need that, you can uninstall them.
-More info in [¶ MDX provider in § Using MDX][mdx-provider].
+More info in [¶ MDX provider in § Sử dụng MDX][mdx-provider].
 
 ###### Changes
 
 The interface of changed slightly:
 
 * The named export `mdx`, which was a `createElement` function, is removed.
-  You can use your framework’s functions instead: `React.createElement`,
+  Bạn có thể use your framework’s functions instead: `React.createElement`,
   `h` from `preact`, etc.
 
 ### `@mdx-js/mdx`
@@ -255,7 +255,7 @@ Then install version 2:
 npm install @mdx-js/mdx @mdx-js/react remark-gfm
 ```
 
-You can update your code as follows:
+Bạn có thể update your code như sau:
 
 <div className="big-columns">
   <div>
@@ -288,7 +288,7 @@ You can update your code as follows:
 </div>
 
 The above changes get MDX 2 close to how MDX 1 worked.
-You can make it simpler:
+Bạn có thể make it simpler:
 
 * [`remark-gfm`][remark-gfm] is optional.
   It adds support for autolink literals, footnotes, strikethrough, tables, and
@@ -300,9 +300,9 @@ You can make it simpler:
   It adds support for context based components passing.
   If you don’t need that, you can uninstall it and remove
   `options.providerImportSource`.
-  More info in [¶ MDX provider in § Using MDX][mdx-provider]
+  More info in [¶ MDX provider in § Sử dụng MDX][mdx-provider]
 
-`@mdx-js/mdx` now supports Preact and other JSX runtimes through configuration.
+`@mdx-js/mdx` now hỗ trợ Preact and other JSX runtimes through configuration.
 Using Preact as an example:
 
 ```tsx path="new-preact.js"
@@ -311,7 +311,7 @@ import {compile} from '@mdx-js/mdx'
 const result = await compile('# hi', {jsxImportSource: 'preact'})
 ```
 
-For more information, please see [§ API in `@mdx-js/mdx`][mdx-api]
+để biết thêm thông tin, please see [§ API in `@mdx-js/mdx`][mdx-api]
 
 ###### Changes
 
@@ -343,7 +343,7 @@ If you used them:
   compile JSX away, source maps, normal markdown, and otherwise change how MDX
   is compiled
 
-For more information, please see [§ API in `@mdx-js/mdx`][mdx-api].
+để biết thêm thông tin, please see [§ API in `@mdx-js/mdx`][mdx-api].
 
 ### `@mdx-js/runtime`
 
@@ -359,7 +359,7 @@ npm uninstall @mdx-js/runtime
 npm install @mdx-js/mdx @mdx-js/react
 ```
 
-You can update your code as follows:
+Bạn có thể update your code như sau:
 
 <div className="big-columns">
   <div>
@@ -399,15 +399,15 @@ You can update your code as follows:
 </div>
 
 The above changes get MDX 2 close to how MDX 1 worked.
-You can make it simpler:
+Bạn có thể make it simpler:
 
 * [`@mdx-js/react`][mdx-react] is optional.
   It adds support for context based components passing.
   If you don’t need that, you can uninstall it and remove
   `options.providerImportSource`.
-  More info in [¶ MDX provider in § Using MDX][mdx-provider]
+  More info in [¶ MDX provider in § Sử dụng MDX][mdx-provider]
 
-`@mdx-js/mdx` now supports Preact and other JSX runtimes through configuration.
+`@mdx-js/mdx` now hỗ trợ Preact and other JSX runtimes through configuration.
 Using Emotion as an example:
 
 ```tsx path="new-emotion.js"
@@ -416,18 +416,18 @@ import * as runtime from '@emotion/react/jsx-runtime'
 // …
 ```
 
-For more information, please see [`evaluate` in `@mdx-js/mdx`][mdx-evaluate].
+để biết thêm thông tin, please see [`evaluate` in `@mdx-js/mdx`][mdx-evaluate].
 
 ###### Changes
 
 * The package `@mdx-js/runtime` is replaced by [`evaluate`][mdx-evaluate]
   from `@mdx-js/mdx`
-* `evaluate` supports any JSX runtime and providers are optional
+* `evaluate` hỗ trợ any JSX runtime and providers are optional
 * `evaluate` yields an `MDXContent` component just like how importing
   and MDX file works
-* `evaluate` supports imports and exports inside evaluated MDX
+* `evaluate` hỗ trợ imports and exports inside evaluated MDX
 
-For more information, please see [`evaluate` in `@mdx-js/mdx`][mdx-evaluate].
+để biết thêm thông tin, please see [`evaluate` in `@mdx-js/mdx`][mdx-evaluate].
 
 ### `remark-mdx`
 
@@ -439,14 +439,14 @@ Then install version 2:
 npm install remark-mdx
 ```
 
-For more information, please see [§ Use in `remark-mdx`][remark-mdx-use].
+để biết thêm thông tin, please see [§ Use in `remark-mdx`][remark-mdx-use].
 
 ### `@mdx-js/vue-loader`
 
 We’ve deprecated `@mdx-js/vue-loader`.
 Our main loader `@mdx-js/loader` can now do the same and more.
 To update, first remove `@mdx-js/vue-loader` and upgrade to Vue 3.
-Then, see [¶ Vue in § Getting started](/docs/getting-started/#vue) on how to use
+Then, see [¶ Vue in § Bắt đầu](/docs/getting-started/#vue) on how to use
 Vue with MDX.
 
 ### `@mdx-js/parcel-plugin-mdx`
@@ -454,7 +454,7 @@ Vue with MDX.
 We’ve deprecated `@mdx-js/parcel-plugin-mdx`.
 Parcel 2 has their own plugin.
 To update, first remove `@mdx-js/parcel-plugin-mdx` and upgrade to Parcel 2.
-Then, see [¶ Parcel in § Getting started](/docs/getting-started/#parcel) on how
+Then, see [¶ Parcel in § Bắt đầu](/docs/getting-started/#parcel) on how
 to use Parcel with MDX.
 
 ### Other packages
@@ -484,11 +484,11 @@ These packages are:
 ## Update MDX files
 
 Now you’ve updated our packages, you can update your MDX files.
-In version 2, we improved the syntax of the MDX format.
+In version 2, we improved the syntax of the Định dạng MDX.
 When upgrading, you’ll likely get errors.
 Read those error messages carefully, as they typically explain what
 happened where and how to fix it.
-See [§ Troubleshooting MDX][trouble] for common errors and how to solve them.
+See [§ Khắc phục sự cố MDX][trouble] for common errors and how to solve them.
 
 ### JSX
 
@@ -501,7 +501,7 @@ You don’t need blank lines between JSX and markdown anymore:
 </hgroup>
 ```
 
-You can now indent your JSX and markdown:
+Bạn có thể now indent your JSX and markdown:
 
 ````mdx chrome=no
 <article>
@@ -516,7 +516,7 @@ You can now indent your JSX and markdown:
 </article>
 ````
 
-You can use markdown “inlines” but not “blocks” inside JSX if the text and tags
+Bạn có thể use markdown “inlines” but not “blocks” inside JSX if the text and tags
 are on the same line:
 
 ```mdx chrome=no
@@ -557,7 +557,7 @@ This is home of...
 ```
 
 That’s because to parse markdown, we first have to divide it into “blocks”.
-So in this case two paragraphs and a heading.
+So trong trường hợp này two paragraphs and a heading.
 Leaving an opening `a` tag in the first paragraph and a stray closing `a` tag in
 the heading.
 
@@ -565,10 +565,10 @@ We also fixed several cases where JSX was not parsed or handled correctly or
 even crashed.
 More on JSX in MDX is in [¶ JSX in § What is MDX?][what-jsx]
 
-### Expressions
+### Biểu thức
 
-You can now use expressions in MDX to include JavaScript.
-You can also use them as an escape hatch if you ever *just* want strings or JSX
+Bạn có thể now use expressions in MDX to include JavaScript.
+Bạn có thể also use them as an escape hatch if you ever *just* want strings or JSX
 rather than markdown:
 
 ```mdx chrome=no
@@ -582,11 +582,11 @@ This is just {'`text`'}, not code.
 ```
 
 More on expressions in MDX is in
-[¶ Expressions in § What is MDX?][what-expressions]
+[¶ Biểu thức in § What is MDX?][what-expressions]
 
 ### ESM
 
-You can more easily embed components in MDX because blank lines are allowed:
+Bạn có thể more easily embed components in MDX because blank lines are allowed:
 
 {/* Note: `language` because theme in VS Code is broken. */}
 
@@ -611,20 +611,20 @@ More on markdown in MDX and where it differs is in
 
 ### GFM
 
-We turned off GFM features in MDX by default.
+We turned off GFM features in MDX theo mặc định.
 GFM extends CommonMark to add autolink literals, footnotes, strikethrough,
 tables, and task lists.
 If you do want these features, you can use a plugin.
 See [our guide on GFM][guide-gfm].
 
-## Update MDX content
+## Update Nội dung MDX
 
 The interface of the generated JavaScript from MDX changed:
 
 * Missing components now throw an error rather than render their children
   and emit a warning to the console, which is closer to how frameworks like
   React handle missing undefined JSX components
-* `parent.child` combos such as `ol.li`, to pass components, were removed, we
+* `parent.child` combos chẳng hạn như `ol.li`, to pass components, were removed, we
   recommend to style your `ol`s, `ul`s, and `li`s separately
 * The special component name `inlineCode` was removed, we recommend to use
   `pre` for the block version of code, and `code` for both the block and
@@ -635,7 +635,7 @@ The interface of the generated JavaScript from MDX changed:
 * We now “sandbox” components, for lack of a better name.
   It means that when you pass a component for `h1`, it does get used for
   `# hi` but not for `<h1>hi</h1>`
-* You can now pass and use objects of components: if you pass
+* Bạn có thể now pass and use objects of components: if you pass
   `components={{theme}}`, where `theme` is an object with a `Box` component,
   it can be used with: `<theme.Box>stuff</theme.Box>`
 * the values exports from an MDX file are no longer passed to layouts, you

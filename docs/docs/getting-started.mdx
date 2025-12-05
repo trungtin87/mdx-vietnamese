@@ -9,15 +9,15 @@ export const info = {
 }
 export const navSortSelf = 2
 
-# Getting started
+# Bắt đầu
 
-This article explains how to integrate MDX into your project.
-It shows how to use MDX with your bundler and JSX runtime of choice. {/* more */}
-To understand how the MDX format works,
+Bài viết này giải thích how to integrate MDX into your project.
+It cho thấy how to use MDX with your bundler and JSX runtime of choice. {/* more */}
+To understand how the Định dạng MDX works,
 we recommend that you start with [§ What is MDX][what].
-See [§ Using MDX][use] when you’re all set up and ready to use MDX.
+See [§ Sử dụng MDX][use] when you’re all set up and ready to use MDX.
 
-## Contents
+## Nội dung
 
 * [Prerequisites](#prerequisites)
 * [Quick start](#quick-start)
@@ -35,12 +35,12 @@ See [§ Using MDX][use] when you’re all set up and ready to use MDX.
   * [JavaScript engines](#javascript-engines)
 * [Further reading](#further-reading)
 
-## Prerequisites
+## Điều kiện tiên quyết
 
 MDX relies on JSX,
-so it’s required that your project supports JSX as well.
+so it’s required that your project hỗ trợ JSX cũng như.
 Any JSX runtime (React, Preact, Vue, etc.) will do.
-Note that we do compile JSX to JavaScript for you so you don’t have to set that
+Lưu ý that we do compile JSX to JavaScript for you so you don’t have to set that
 up.
 
 All `@mdx-js/*` packages are written in modern JavaScript.
@@ -48,7 +48,7 @@ A [Node.js][node-js] version of 16 or later is needed to use them.
 Our packages are also [ESM only][github-gist-esm].
 
 <Note type="info">
-  **Note**: Using Rust instead of Node.js?
+  **Lưu ý**: Using Rust instead of Node.js?
   Try [`mdxjs-rs`][mdxjs-rs]!
 </Note>
 
@@ -68,7 +68,7 @@ have one:
 * if you use **webpack** (or Next.js),
   install and configure [`@mdx-js/loader`][mdx-loader]
 
-You can also use MDX without bundlers:
+Bạn có thể also use MDX without bundlers:
 
 * you can import MDX files in **Node.js** with
   [`@mdx-js/node-loader`][mdx-node-loader]
@@ -113,7 +113,7 @@ it’s time to configure your JSX runtime.
   `'@emotion/react'`
 * if you use **Theme UI**,
   install and configure [`@mdx-js/react`][mdx-react],
-  then wrap your MDX content in a `<ThemeProvider />`
+  then wrap your Nội dung MDX in a `<ThemeProvider />`
 
 Other JSX runtimes are supported by setting
 [`jsxImportSource` in `ProcessorOptions`][api-processor-options].
@@ -130,7 +130,7 @@ see their dedicated sections:
 
 ### Editor
 
-You can enhance the experience of using MDX by adding support of it to your
+Bạn có thể enhance the experience of using MDX by adding support of it to your
 editor:
 
 * if you use **VS Code**,
@@ -172,7 +172,7 @@ Our packages are typed with [TypeScript][].
 For types to work,
 the `JSX` namespace must be typed.
 This is done by installing and using the types of your framework,
-such as [`@types/react`][definitely-typed-react],
+chẳng hạn như [`@types/react`][definitely-typed-react],
 then augmenting the `mdx/types.js` module.
 
 ```ts twoslash path="example.ts"
@@ -186,8 +186,8 @@ declare module 'mdx/types.js' {
 To enable types for imported `.mdx`, `.md`, etc.,
 install and use [`@types/mdx`][definitely-typed-mdx].
 This package also exports several useful types,
-such as `MDXComponents` which represents the `components` prop.
-You can import them like so:
+chẳng hạn như `MDXComponents` which represents the `components` prop.
+Bạn có thể import them như sau:
 
 ```ts twoslash path="example.ts"
 import type {MDXComponents} from 'mdx/types.js'
@@ -242,7 +242,7 @@ etc.) you use.
 To use more modern JavaScript features than what your users support,
 [configure esbuild’s `target`][esbuild-target].
 
-See also [¶ Bun][javascript-engines-bun],
+Xem thêm [¶ Bun][javascript-engines-bun],
 which you might be using,
 for more info.
 
@@ -286,7 +286,7 @@ etc.) you use.
 To use more modern JavaScript features than what your users support,
 [install and configure `@rollup/plugin-babel`][mdx-rollup-babel].
 
-See also [¶ Vite][build-system-vite],
+Xem thêm [¶ Vite][build-system-vite],
 if you use Rollup through it,
 for more info.
 
@@ -335,7 +335,7 @@ etc.) you use.
 To use more modern JavaScript features than what your users support,
 [install and configure `babel-loader`][mdx-loader-babel].
 
-See also [¶ Next.js][site-generator-next],
+Xem thêm [¶ Next.js][site-generator-next],
 if you use webpack through it,
 for more info.
 
@@ -369,7 +369,7 @@ To use more modern JavaScript features than what your users support,
 [configure Vite’s `build.target`][vite-build-target].
 
 <Note type="info">
-  **Note**: If you also use `@vitejs/plugin-react`,
+  **Lưu ý**: If you also use `@vitejs/plugin-react`,
   you must force `@mdx-js/rollup` to run in the `pre` phase before it:
 
   ```js twoslash path="vite.config.js"
@@ -388,7 +388,7 @@ To use more modern JavaScript features than what your users support,
   ```
 </Note>
 
-See also [¶ Rollup][bundler-rollup] which is used in Vite and see
+Xem thêm [¶ Rollup][bundler-rollup] which is used in Vite and see
 [¶ Vue][jsx-runtime-vue] if you’re using that,
 for more info.
 
@@ -468,7 +468,7 @@ for more info.
   }
   ```
 
-  …can be used like so with the Babel API:
+  …can be used như sau with the Babel API:
 
   ```js twoslash path="example.js"
   /// <reference types="node" />
@@ -571,7 +571,7 @@ Which in turn lets us choose whether to use the `@mdx-js/mdx` or
 #### Astro
 
 [Astro][] has its own MDX integration.
-You can add the integration with the Astro CLI: `npx astro add mdx`.
+Bạn có thể add the integration with the Astro CLI: `npx astro add mdx`.
 
 This base setup lets you import markdown, Astro components, and MDX files as
 components.
@@ -583,7 +583,7 @@ see [Astro’s MDX integration docs][astro-mdx].
 
 #### Docusaurus
 
-[Docusaurus][] supports MDX by default.
+[Docusaurus][] hỗ trợ MDX theo mặc định.
 See [Docusaurus’ MDX and React guide][docusaurus-markdown-react] for info on
 how to use MDX with Docusaurus.
 
@@ -630,7 +630,7 @@ See [`@parcel/transformer-mdx`][parcel-mdx]
 on how to use MDX with Parcel.
 
 <Note type="info">
-  **Note**: the official Parcel plugin is currently not maintained.
+  **Lưu ý**: the official Parcel plugin is currently not maintained.
   For a maintained alternative,
   try [`parcel-transformer-mdx`][parcel-transformer-mdx].
 </Note>
@@ -652,10 +652,10 @@ on how to use MDX with Parcel.
 [Emotion][] is supported when
 [`jsxImportSource` in `ProcessorOptions`][api-processor-options] is set to
 `'@emotion/react'`.
-You can optionally install and configure [`@mdx-js/react`][mdx-react] to
+Bạn có thể optionally install and configure [`@mdx-js/react`][mdx-react] to
 support context based component passing.
 
-See also [¶ React][jsx-runtime-react],
+Xem thêm [¶ React][jsx-runtime-react],
 which is used in Emotion,
 and see [¶ Rollup][bundler-rollup] and [¶ webpack][bundler-webpack],
 which you might be using,
@@ -705,7 +705,7 @@ You will need to swap HTML elements out for Ink’s components.
 See [§ Table of components][table-of-components] for what those are and Ink’s
 docs on what they can be replaced with.
 
-See also [¶ Node.js][js-engine-node] and [¶ React][jsx-runtime-react] for more
+Xem thêm [¶ Node.js][js-engine-node] and [¶ React][jsx-runtime-react] for more
 info.
 
 #### Preact
@@ -722,21 +722,21 @@ info.
 
 Preact is supported when [`jsxImportSource` in
 `ProcessorOptions`][api-processor-options] is set to `'preact'`.
-You can optionally install and configure [`@mdx-js/preact`][mdx-preact] to
+Bạn có thể optionally install and configure [`@mdx-js/preact`][mdx-preact] to
 support context based component passing.
 
-See also [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
+Xem thêm [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
 [¶ webpack][bundler-webpack],
 which you might be using,
 for more info.
 
 #### React
 
-React is supported by default.
-You can optionally install and configure [`@mdx-js/react`][mdx-react] to
+React is supported theo mặc định.
+Bạn có thể optionally install and configure [`@mdx-js/react`][mdx-react] to
 support context based component passing.
 
-See also [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
+Xem thêm [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
 [¶ webpack][bundler-webpack],
 which you might be using,
 for more info.
@@ -762,7 +762,7 @@ Svelte is supported when [`jsxImportSource` in
 `ProcessorOptions`][api-processor-options] is set to
 [`'svelte-jsx'`][svelte-jsx].
 
-See also [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
+Xem thêm [¶ Rollup][bundler-rollup], [¶ esbuild][bundler-esbuild], and
 [¶ webpack][bundler-webpack],
 which you might be using,
 for more info.
@@ -781,10 +781,10 @@ for more info.
 
 Vue is supported when [`jsxImportSource` in
 `ProcessorOptions`][api-processor-options] is set to `'vue'`.
-You can optionally install and configure [`@mdx-js/vue`][mdx-vue] to
+Bạn có thể optionally install and configure [`@mdx-js/vue`][mdx-vue] to
 support context based component passing.
 
-See also [¶ Vite][build-system-vite],
+Xem thêm [¶ Vite][build-system-vite],
 which you might be using,
 for more info.
 
@@ -803,7 +803,7 @@ for more info.
 Solid is supported when [`jsxImportSource` in
 `ProcessorOptions`][api-processor-options] is set to `'solid-js/h'`.
 
-See also [¶ Rollup][bundler-rollup] and [¶ Vite][build-system-vite],
+Xem thêm [¶ Rollup][bundler-rollup] and [¶ Vite][build-system-vite],
 which you might be using,
 for more info.
 
@@ -837,12 +837,12 @@ MDX files can be imported in [Bun][] by using
   ```
 </details>
 
-## Further reading
+## Đọc thêm
 
-* If you want to use MDX content in your project,
-  see [§ Using MDX][use]
+* If you want to use Nội dung MDX in your project,
+  see [§ Sử dụng MDX][use]
 * If you’re getting errors integrating MDX,
-  see [§ Troubleshooting MDX][trouble] or [§ Support][support]
+  see [§ Khắc phục sự cố MDX][trouble] or [§ Hỗ trợ][support]
 
 [api-evaluate]: /packages/mdx/#evaluatefile-options
 

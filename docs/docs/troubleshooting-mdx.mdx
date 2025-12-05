@@ -12,21 +12,21 @@ export const navSortSelf = 5
 {/* lint disable maximum-heading-length */}
 
 <Note type="info">
-  **Note**: Had trouble with something that wasn’t explained here but should be?
+  **Lưu ý**: Had trouble with something that wasn’t explained here but should be?
   Please let us know.
-  See [§ Contribute][contribute] for how to help.
+  See [§ Đóng góp][contribute] for how to help.
 </Note>
 
-# Troubleshooting MDX
+# Khắc phục sự cố MDX
 
 This article goes through several common problems and errors that might occur
 when using MDX. {/* more */}
-To understand how the MDX format works, we recommend that you start with
+To understand how the Định dạng MDX works, we recommend that you start with
 [§ What is MDX][what].
 How to use [our packages][packages] is documented in their readmes.
-To migrate to the latest MDX, see [§ Migrating from v1 to v2][migation-v2].
+To migrate to the latest MDX, see [§ Di chuyển from v1 to v2][migation-v2].
 
-## Contents
+## Nội dung
 
 * [Problems integrating MDX](#problems-integrating-mdx)
   * [ESM](#esm)
@@ -74,14 +74,14 @@ Some still require extra configuration.
 
 There’s a great [Gist by
 **@sindresorhus**](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)
-which explains in detail how to use ESM with many different tools.
+which giải thích in detail how to use ESM with many different tools.
 If you’re having trouble with MDX, some other tool, and ESM,
 you’ll likely find what you’re looking for there.
 Please give it a thorough read.
 If you’re still having problems, the issue tracker of the tools you’re
 integrating MDX with might provide the answer.
 
-If you’re having trouble with tools that don’t support ESM, such as Electron,
+If you’re having trouble with tools that don’t support ESM, chẳng hạn như Electron,
 one short-term solution is to use a bundler to make a CJS version.
 
 <details>
@@ -110,22 +110,22 @@ It was introduced in version 2 to help with migration.
 
 The `renderer` option allowed arbitrary text to be injected before each compiled
 MDX file.
-This was typically used to support frameworks other than React such as Preact.
-We now have options such as `jsxImportSource` for that and arbitrary JavaScript
+This was typically used to support frameworks other than React chẳng hạn như Preact.
+We now have options chẳng hạn như `jsxImportSource` for that and arbitrary JavaScript
 can be added with `recmaPlugins`.
 Because version 2 uses an AST based approach, it is no longer feasible to
 support a `renderer`, so it was removed.
 
-Please see [¶ Preact in § Getting started](/docs/getting-started/#preact) for
+Please see [¶ Preact in § Bắt đầu](/docs/getting-started/#preact) for
 how to support Preact.
-See [¶ Creating plugins in § Extending MDX](/docs/extending-mdx/#creating-plugins)
+See [¶ Tạo plugins in § Mở rộng MDX](/docs/extending-mdx/#creating-plugins)
 for how to create plugins.
 
 ### `` Incorrect `format: 'detect'` ``
 
 ### `` Unexpected `format: 'detect'` ``
 
-The full error message in MDX 2 is as follows:
+The full error message in MDX 2 is như sau:
 
 ```mdx-invalid chrome=no
 Incorrect `format: 'detect'`: `createProcessor` can support either `md` or `mdx`; it does not support detecting the format
@@ -140,7 +140,7 @@ Unexpected `format: 'detect'`, which is not supported by `createProcessor`, expe
 This error is thrown by [`@mdx-js/mdx`][mdx], our core compiler.
 It was introduced in version 2 when the `format` option was introduced.
 
-The `format` option, when configured with `'detect'`, allows inferring whether a
+The `format` option, when configured with `'detect'`, cho phép inferring whether a
 file is MDX or plain markdown.
 Based on that information, plugins are configured differently, and with
 different options.
@@ -166,7 +166,7 @@ If you are using the classic runtime, you have to define a `pragma`.
 
 This is a warning.
 It is not an error.
-You can keep on using these options, but expect them to be removed in the
+Bạn có thể keep on using these options, but expect them to be removed in the
 future.
 
 All major frameworks currently support the automatic JSX runtime.
@@ -187,7 +187,7 @@ our core compiler.
 They were introduced in version 2 when `evaluate` (and `evaluateSync`) were
 introduced.
 
-`evaluate` supports React and other frameworks.
+`evaluate` hỗ trợ React and other frameworks.
 But these frameworks must support an automatic JSX runtime that exposes these
 three exports.
 If you’re getting this error, that means that either a) the framework does not
@@ -199,7 +199,7 @@ for examples on how to pass these values.
 
 ### ``Unexpected missing `options.baseUrl` needed…``
 
-The full error message in MDX is as follows:
+The full error message in MDX is như sau:
 
 ```mdx-invalid chrome=no
 Unexpected missing `options.baseUrl` needed to support `export … from`, `import`, or `import.meta.url` when generating `function-body`
@@ -228,9 +228,9 @@ Errors typically fall in these three categories:
   — Escape these (`\<`, `\{`) if you mean them as plain text instead of JS(X)
 * **Incorrect interleaving**
   — See the rules in
-  [¶ Interleaving in § What is MDX?][interleaving]
+  [¶ Xen kẽ in § What is MDX?][interleaving]
 * **Broken JavaScript**
-  — Make sure the JavaScript you write is valid
+  — Đảm bảo the JavaScript you write is valid
 
 ### `Could not parse import/exports with acorn: $error`
 
@@ -336,7 +336,7 @@ expression.
 If you just want braces instead of an expression, escape the opening: `\{`.
 If you do want an expression, make sure that it’s valid JavaScript and that it
 is an expression.
-That means statements (such as `if` and `else` and `for` loops) do not work.
+That means statements (chẳng hạn như `if` and `else` and `for` loops) do not work.
 If you need complex logic, you can wrap statements and whole programs into an
 IIFE, or move it out to a different file, export it from there, and import it in
 MDX.
@@ -369,7 +369,7 @@ An example is:
 <div {...a, ...b} />
 ```
 
-The reason for this error is that JSX only allows spreading a single value at a
+The reason for this error is that JSX only cho phép spreading a single value at a
 time:
 
 ```mdx chrome=no
@@ -389,7 +389,7 @@ An example is:
 <div {values} {/* comment */} {} />
 ```
 
-The reason for this error is that JSX only allows spreading values:
+The reason for this error is that JSX only cho phép spreading values:
 
 ```mdx chrome=no
 <div {...a} />
@@ -428,10 +428,10 @@ Some examples are:
 <a/->
 ```
 
-The reason for these errors is that JSX has a very strict grammar and expects
+The reason for these errors is that JSX has a very strict grammar and mong đợi
 tags to be valid.
 There are different solutions depending on what was expected.
-Please read the error message carefully as it indicates where the problem
+Vui lòng đọc the error message carefully as it indicates where the problem
 occurred and what was expected instead.
 
 ### ``Unexpected closing slash `/` in tag, expected an open tag first``
@@ -534,7 +534,7 @@ An example is:
 The reason for this error is that a markdown construct ends while there are
 still tags open.
 See the rules on
-[¶ Interleaving in § What is MDX?][interleaving]
+[¶ Xen kẽ in § What is MDX?][interleaving]
 
 [contribute]: /community/contribute/
 

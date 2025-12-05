@@ -11,16 +11,16 @@ export const navSortSelf = 6
 
 # MDX on demand
 
-This guide shows how to use `@mdx-js/mdx` to compile MDX on the server and run
+Hướng dẫn này cho thấy how to use `@mdx-js/mdx` to compile MDX on the server and run
 the result on clients. {/* more */}
-Some frameworks, such as Next.js and Remix, make it easy to split work between
+Some frameworks, chẳng hạn như Next.js and Remix, make it easy to split work between
 servers and clients.
 Using that it’s possible to for example do most of the work on demand on the
 server instead of at build time, then pass the resulting data to clients, where
 they finally use it.
 
 This is similar to what people sometimes use [`mdx-bundler`][mdx-bundler] or
-[`next-mdx-remote`][next-mdx-remote] for, but MDX also supports it.
+[`next-mdx-remote`][next-mdx-remote] for, but MDX also hỗ trợ it.
 
 ## Quick example
 
@@ -48,7 +48,7 @@ const {default: Content} = await run(code, {...runtime, baseUrl: import.meta.url
 ```
 
 `Content` is now an `MDXContent` component that you can use like normal in your
-framework (see [§ Using MDX][use]).
+framework (see [§ Sử dụng MDX][use]).
 
 More information is available in the API docs of `@mdx-js/mdx` for
 [`compile`][compile] and [`run`][run].
@@ -56,14 +56,14 @@ For other use cases, you can also use [`evaluate`][eval], which both compiles
 and runs in one.
 
 <Note type="info">
-  **Note**: MDX is not a bundler (esbuild, webpack, and Rollup are bundlers):
+  **Lưu ý**: MDX is not a bundler (esbuild, webpack, and Rollup are bundlers):
   you can’t import other code from the server within the string of MDX and get a
   nicely minified bundle out or so.
 </Note>
 
 ## Next.js example
 
-Some frameworks let you write the server and client code in one file, such as
+Some frameworks let you write the server and client code in one file, chẳng hạn như
 Next.
 
 ```js twoslash path="pages/hello.js"

@@ -11,8 +11,8 @@ export const navSortSelf = 5
 
 This guide explores how to embed things like tweets, gists or codepens in
 markdown. {/* more */}
-MDX supports standard markdown syntax ([CommonMark][]).
-It does not support embeds by default.
+MDX hỗ trợ standard markdown syntax ([CommonMark][]).
+It does not support embeds theo mặc định.
 
 There are two ways to accomplish embeds: at compile time or at runtime.
 Doing it at compile time means the effort is spent upfront so that readers will
@@ -24,7 +24,7 @@ Vue, etc.)
 
 ## Embeds at compile time
 
-You can use [`@remark-embedder/core`][remark-embedder] by doing something like
+Bạn có thể use [`@remark-embedder/core`][remark-embedder] by doing something like
 this:
 
 ```js path="example.js"
@@ -78,7 +78,7 @@ console.log(
 
 ## Embeds at run time
 
-You can use the React-specific [MDX Embed][mdx-embed] to embed things in MDX.
+Bạn có thể use the React-specific [MDX Embed][mdx-embed] to embed things in MDX.
 Here is an example MDX file that uses a specific embed without `@mdx-js/react`:
 
 ```mdx path="example.mdx"

@@ -8,7 +8,7 @@ export const info = {
 }
 
 <Note type="info">
-  **Note**: Info on how to migrate is available in our
+  **Lưu ý**: Info on how to migrate is available in our
   [Version 3 migration guide][migrating].
 </Note>
 
@@ -20,7 +20,7 @@ For most folks, updating Node.js and plugins is all that’s needed!
 
 {/* more */}
 
-## Contents
+## Nội dung
 
 * [Breaking changes](#breaking-changes)
 * [Improvements to the MDX format](#improvements-to-the-mdx-format)
@@ -37,21 +37,21 @@ version.
 
 Across the ecosystem there were several small internal breaking changes.
 Everything’s released already.
-You can update all plugins now.
+Bạn có thể update all plugins now.
 If you ran into problems before, it should work now.
 
 We also removed some infrequently used deprecated APIs.
 You’re likely fine but gloss over the [v3 migration guide][migrating] if you
 get errors.
 
-Important to note when you use your lesser-known but powerful `evaluate`, `run`,
+Quan trọng to note when you use your lesser-known but powerful `evaluate`, `run`,
 or `outputFormat: 'function-body'` APIs, please pass the `baseUrl` option.
 That makes sure `import.meta.url`, `import`, and `export` work.
 You’ll get a runtime error when those features are used otherwise.
 
-## Improvements to the MDX format
+## Improvements to the Định dạng MDX
 
-There’s also a few small improvements to the MDX format, some of which
+There’s also a few small improvements to the Định dạng MDX, some of which
 technically breaking.
 
 ### Adjacent block JSX and expressions in MDX
@@ -87,7 +87,7 @@ it wasn’t allowed.
 
 ### ES2024 in MDX
 
-You can now use modern JavaScript syntax in MDX.
+Bạn có thể now use modern JavaScript syntax in MDX.
 Acorn, used internally, is now instructed to use ES2024.
 
 ## Miscellaneous
